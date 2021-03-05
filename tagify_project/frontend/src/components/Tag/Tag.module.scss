@@ -1,0 +1,49 @@
+.Tag {
+  & {
+    border-radius: 50px;
+    background: #95ff00;
+    color: #000000;
+    margin: 0 10px;
+    // width: 70px;
+    width: 100%;
+    padding: 4px 13px;
+    text-align: center;
+    font-size: smaller;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    width: 80%;
+    padding-right: 6px;
+    outline: none;
+
+    input {
+      outline: none;
+      border: 0;
+      background: inherit;
+    }
+  }
+
+  &__delete {
+    color: grey;
+  }
+
+  &__red {
+    background: rgb(170, 0, 0);
+  }
+  &__green {
+    background: rgb(0, 160, 8);
+  }
+  &__blue {
+    background: rgb(0, 20, 199);
+  }
+  &__purple {
+    background: rgb(101, 0, 168);
+  }
+  &__orange {
+    background: rgb(223, 100, 0);
+  }
+
+}

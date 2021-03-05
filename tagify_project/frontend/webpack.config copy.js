@@ -4,8 +4,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: { app: "./src/index.js" },
@@ -27,22 +25,17 @@ module.exports = {
         }
       },
       {
-        test: /\.s?css$/,
-        oneOf: [
+        test: [/.css$/],
+        use: [
+          "style-loader",
           {
-            test: /\.module\.s?css$/,
-            use: [
-              "style-loader",
-              {
-                loader: "css-loader",
-                options: { modules: true }
-              },
-              "sass-loader"
-            ]
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV !== "production",
+              reloadAll: true
+            }
           },
-          {
-            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-          }
+          "css-loader"
         ]
       },
       {
@@ -74,14 +67,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
+      template: path.resolve(__dirname,'src/index.html'),
       filename: 'index.html',
       inject: 'body'
     }),
     new MiniCssExtractPlugin({
-      // filename: "[name].[contenthash].css",
-      filename: isDevelopment ? '[name].css' : '[name].[contenthash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+      filename: "[name].[contenthash].css"
     }),
     new WebpackMd5Hash()
   ],

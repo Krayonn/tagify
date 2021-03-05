@@ -1,1 +1,5 @@
-export const RETRIEVE_AUTH_CODE = 'RETRIEVE_AUTH_CODE';
+export const RETRIEVE_AUTH_TOKENS = 'RETRIEVE_AUTH_TOKENS';
+export const ADD_TAG = 'ADD_TAG';
+export const REMOVE_TAG = 'REMOVE_TAG';
+export const UPDATE_TAG = 'UPDATE_TAG';
+export const UPDATE_TAG_SOURCE = 'UPDATE_TAG_SOURCE';
