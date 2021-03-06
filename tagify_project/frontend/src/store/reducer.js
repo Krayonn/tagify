@@ -5,10 +5,7 @@ const initialState = {
     refreshToken: null,
     tagSource: '',
     tags: {
-        'testTrackid123': {1: 'testTag'}
-    },
-    tagColours: {
-        'testTrackid123': 'green'
+        'testTrackid123': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' }]
     }
 };
 
@@ -21,44 +18,59 @@ const retrieveAuthTokens = (state, action) => {
 }
 
 const addTag = (state, action) => {
-    const newId = Math.max(Object.keys(state.tags[action.trackId]))+1
-    
-    const colours = ['red','blue','green','purple','orange'];
+    const newId = state.tags[action.trackId] ? Math.max(...state.tags[action.trackId].map(t => t.id)) + 1 : 1;
+    const colours = ['red', 'blue', 'green', 'purple', 'orange'];
     const randTagColour = colours[Math.floor(Math.random() * colours.length)];
-    const updatedTagColours = Object.keys(state.tagColours).includes(action.tagName) ? {...state.tagColours} : {...state.tagColours, [action.tagName]: randTagColour}
+    
+    let matchingTag = null;
+    for (let [trackId, tags] of Object.entries(state.tags)) {
+        console.log('entries',trackId, tags)
+        matchingTag = tags.find(tag => tag.value === action.tagName)
+        if (matchingTag) break
+    }
+    const matchColour = matchingTag ? matchingTag.colour : null
 
-    const updatedTrackTags = state.tags[action.trackId] ? {...state.tags[action.trackId], [newId]: action.tagName} : {[newId]: action.tagName}
+    const updatedTrackTags = state.tags[action.trackId] ? [...state.tags[action.trackId], { id: newId, value: action.tagName, colour: randTagColour, matchColour: matchColour }] : [{ id: newId, value: action.tagName, colour: randTagColour, matchColour: matchColour }]
+
+
     return {
         ...state,
         tags: {
             ...state.tags,
             [action.trackId]: updatedTrackTags
-        },
-        tagColours: updatedTagColours
+        }
     }
 }
 
 const removeTag = (state, action) => {
-    console.log('remove tag')
-    const updateTagColours = {...state.tagColours}
-    console.log('updateTagColours ',updateTagColours)
-    delete updateTagColours[state.tags[action.trackId][action.tagId]]
+    const updatedTags = state.tags[action.trackId].filter(tag => tag.id !== action.tagId)
 
-    const updatedTags = state.tags[action.trackId] //.filter(tag => tag !== action.tagName)
-    delete updatedTags[action.tagId]
     return {
         ...state,
         tags: {
             ...state.tags,
             [action.trackId]: updatedTags
-        },
-        tagColours: updateTagColours
+        }
     }
 }
 
 const updateTag = (state, action) => {
-    const updatedTrackTags = {...state.tags[action.trackId], [action.tagId]: action.input}
-    
+    const updatedTrackTags = [...state.tags[action.trackId]]
+    const updatedTag = updatedTrackTags[updatedTrackTags.findIndex(t => t.id === action.tagId)]
+    updatedTag.value = action.input
+
+    let matchingTag = null;
+    for (let [trackId, tags] of Object.entries(state.tags)) {
+        console.log('entries',trackId, tags)
+        matchingTag = tags.find(tag => tag.value === action.input && trackId !== action.trackId)
+        if (matchingTag) {
+            updatedTag.matchColour = matchingTag.matchColour ? matchingTag.matchColour : matchingTag.colour
+            break
+        }
+    }
+    console.log('matchingTag', matchingTag)
+    if (!matchingTag) updatedTag.matchColour = null
+
     return {
         ...state,
         tags: {

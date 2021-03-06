@@ -44,7 +44,7 @@ class Home extends Component {
                     if (authToken) {
                         this.props.onRetrieveTokens(authToken, refreshToken)
                     }
-                        
+
                 });
         }
     }
@@ -82,14 +82,18 @@ class Home extends Component {
         }
         return (
             <div>
-                <Layout />                
+                <Layout />
 
                 <Auth />
-                <input value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)}/>
+                <input value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
                 <Track
-                        id='testTrackid123'
-                        name='banger'
-                        trackNumber='1' />
+                    id='testTrackid123'
+                    name='banger'
+                    trackNumber='1' />
+                <Track
+                    id='testTrackid456'
+                    name='banger2'
+                    trackNumber='2' />
                 {albums}
                 <button onClick={this.getAlbumsHandler}>albums me up</button>
             </div>

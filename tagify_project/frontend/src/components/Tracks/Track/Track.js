@@ -7,6 +7,18 @@ import * as actions from '../../../store/action'
 
 class Track extends Component {
 
+    debounce = (func, delay) => {
+        let debounceTimer;
+        console.log('Debounce!')
+        return function () {
+            const context = this;
+            const args = arguments;
+            clearTimeout(debounceTimer);
+            debounceTimer =
+            setTimeout(() => func.apply(context, args), delay);
+        }
+    }
+    
     addTagHandler = (trackId, tagName) => {
         if (!this.props.tags[trackId] || !Object.values(this.props.tags[trackId]).includes(tagName)) {
             this.props.onAddTag(trackId, tagName)
@@ -19,9 +31,11 @@ class Track extends Component {
     }
 
     updateTagHandler = (trackId, tagId, event) => {
-        const input = event.target.value;
-        this.props.onUpdateTag(trackId, tagId, input);
+        event.persist();
+        this.props.onUpdateTag(trackId, tagId, event.target.value);
     }
+
+    optUpdateTagHandler = this.debounce(this.updateTagHandler, 500)
 
     render() {
         let tags = null;
@@ -30,13 +44,15 @@ class Track extends Component {
             for (let trackId of Object.keys( allTags )){
                 if (trackId === this.props.id) {
                     tags = Object.values(allTags[trackId]).map(tag => {
-                        const tagId = Object.keys(allTags[trackId]).find(key => allTags[trackId][key] === tag);
+                        const colour = tag.matchColour ? tag.matchColour : tag.colour
+                        // const tagId = Object.keys(allTags[trackId]).find(key => allTags[trackId][key] === tag);
                         return <Tag
-                            tagName={tag}
-                            updateTag={(event) => this.updateTagHandler(trackId, tagId, event)}
-                            deleteTag={() => this.removeTagHandler(trackId, tagId)}
-                            colour={this.props.tagColours[tag]}
-                            tagId={tagId}
+                            tagName={tag.value}
+                            updateTag={(event) => this.updateTagHandler(trackId, tag.id, event)}
+                            // updateTag={(event) => this.optUpdateTagHandler(trackId, tagId, event)}
+                            deleteTag={() => this.removeTagHandler(trackId, tag.id)}
+                            colour={colour}
+                            tagId={tag.id}
                             />
                     })
                 }
