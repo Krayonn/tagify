@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'music',
+    'api_auth',
 ]
 
 MIDDLEWARE = [

@@ -1,30 +1,20 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    authToken: null,
-    refreshToken: null,
     tagSource: '',
     tags: {
-        'testTrackid123': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' }]
+        'testTrackid1': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' }],
+        'testTrackid2': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' },{ id: 2, value: 'testTag2', colour: 'green', matchColour: 'green' }]
     }
 };
-
-const retrieveAuthTokens = (state, action) => {
-    return {
-        ...state,
-        authToken: action.authToken,
-        refreshToken: action.refreshToken
-    }
-}
 
 const addTag = (state, action) => {
     const newId = state.tags[action.trackId] ? Math.max(...state.tags[action.trackId].map(t => t.id)) + 1 : 1;
     const colours = ['red', 'blue', 'green', 'purple', 'orange'];
     const randTagColour = colours[Math.floor(Math.random() * colours.length)];
-    
+
     let matchingTag = null;
     for (let [trackId, tags] of Object.entries(state.tags)) {
-        console.log('entries',trackId, tags)
         matchingTag = tags.find(tag => tag.value === action.tagName)
         if (matchingTag) break
     }
@@ -61,14 +51,12 @@ const updateTag = (state, action) => {
 
     let matchingTag = null;
     for (let [trackId, tags] of Object.entries(state.tags)) {
-        console.log('entries',trackId, tags)
         matchingTag = tags.find(tag => tag.value === action.input && trackId !== action.trackId)
         if (matchingTag) {
             updatedTag.matchColour = matchingTag.matchColour ? matchingTag.matchColour : matchingTag.colour
             break
         }
     }
-    console.log('matchingTag', matchingTag)
     if (!matchingTag) updatedTag.matchColour = null
 
     return {
@@ -87,13 +75,24 @@ const updateTagSource = (state, action) => {
     }
 }
 
+const retrieveTags = (state, action) => {
+    console.log('in red rec tag', action)
+    return {
+        ...state,
+        tags: {
+            ...state.tags,
+            ...action.tags
+        }
+    }
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.RETRIEVE_AUTH_TOKENS: return retrieveAuthTokens(state, action)
         case actionTypes.ADD_TAG: return addTag(state, action)
         case actionTypes.REMOVE_TAG: return removeTag(state, action)
         case actionTypes.UPDATE_TAG: return updateTag(state, action)
         case actionTypes.UPDATE_TAG_SOURCE: return updateTagSource(state, action)
+        case actionTypes.RETIREVE_TAGS_SUCCSESS: return retrieveTags(state, action)
         default: return state;
     }
 }

@@ -4,18 +4,15 @@ import Album from './Album/Album';
 
 const albums = (props) => {
 
-    console.log('the albums:',props.albums)
     let albums = null;
     if (props.albums) {
 
         albums = (
             props.albums.map(album => {
-                let image640 = null;
-                for (const image of album.images) {
-                    if (image.height === 640) image640 = image.url 
-                }
+                const image640 = album.images.find(i => i.height === 640 || !i.height).url
                 return (
                     <Album
+                        key={album.id}
                         id={album.id}
                         name={album.name}
                         artist={album.artist}

@@ -1,24 +1,39 @@
 import React, { Component } from 'react';
-import scssStyles from './Layout.module.scss';
+import styles from './Layout.module.scss';
+import { connect } from 'react-redux';
 
-import logo from '../../assets/logo.png'
+import Toolbar from '../../components/Toolbar/Toolbar';
+import * as actions from '../../store/actions/index';
+
 class Layout extends Component {
 
 
     render() {
 
         return (
-            <div>
-                <div className={scssStyles.Layout}>
-                    <div className={scssStyles.Layout__logo}>
-                        {/* <img src={logo} alt="tag that bitch" /> */}
-                        <h1>TAGIFY</h1>
-                    </div>
-                </div>
+            <div className={styles.Layout__logo}>
+                <Toolbar logout={this.props.onLogout} isAuth={this.props.authenticated}/>
+                <main className={styles.Content} >
+                    {this.props.children}
+                </main>
             </div>
 
         )
     }
 }
 
-export default Layout
+const mapStateToProps = state => {
+    return {
+        authenticated: state.auth.authenticated,
+        username: state.auth.username
+    }
+
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: (username) => dispatch(actions.login(username)),
+        onLogout: () => dispatch(actions.logout())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

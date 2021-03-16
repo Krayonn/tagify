@@ -2,16 +2,29 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import reducer from './store/reducer';
 import Home from './containers/Home/Home';
+import Layout from './containers/Layout/Layout';
+import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist";
+import Login from "./containers/Login/Login";
+import authReducer from './store/reducers/auth'
+import musicReducer from './store/reducers/music'
+import tagReducer from './store/reducers/tag'
+
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+// const composeEnhancers = null || compose;
 
-const store = createStore(reducer, composeEnhancers(
-  applyMiddleware(thunk)
+const rootReducer = combineReducers({
+  auth: authReducer,
+  tag: tagReducer,
+  music: musicReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk) 
 ));
 
 class App extends Component {
@@ -20,9 +33,13 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <Switch>
-            <Route path="/" component={Home} />
-          </Switch>
+          <Layout>
+            <Switch>
+              <Route path="/createPlaylist" component={CreatePlaylist} />
+              <Route path="/login" component={Login} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </Layout>
         </BrowserRouter>
       </Provider>
     );

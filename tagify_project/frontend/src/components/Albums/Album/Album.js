@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Tracks from '../../Tracks/Tracks';
 import scssStyles from './Album.module.scss';
-import * as actions from '../../../store/action';
 
 class Album extends Component {
 
@@ -14,15 +13,10 @@ class Album extends Component {
         this.setState({showTracks: !this.state.showTracks})
     }
 
-    addTagHandler = () => {
-
-    }
-
     render() {
 
         const year = this.props.releaseDate.substring(0, 4)
         let tracks = null;
-        console.log('in album track props', this.props.tracks)
         if (this.state.showTracks) {
             tracks = (<Tracks tracks={this.props.tracks} showTracks={this.state.showTracks} />)
         }

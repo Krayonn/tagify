@@ -1,0 +1,522 @@
+{
+    "href": "https://api.spotify.com/v1/users/kbeckers192/playlists?offset=0&limit=20",
+    "items": [
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/5hXVOk1p4bnwZ46UfRKoKd"
+            },
+            "href": "https://api.spotify.com/v1/playlists/5hXVOk1p4bnwZ46UfRKoKd",
+            "id": "5hXVOk1p4bnwZ46UfRKoKd",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b2733f30a062dafcdbc1a8fad842ab67616d0000b273a05c6229569328ac27cc968eab67616d0000b273a42fcd14811bd0c7750d2990ab67616d0000b273b183451ad07f8af6a4bbef68",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b2733f30a062dafcdbc1a8fad842ab67616d0000b273a05c6229569328ac27cc968eab67616d0000b273a42fcd14811bd0c7750d2990ab67616d0000b273b183451ad07f8af6a4bbef68",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b2733f30a062dafcdbc1a8fad842ab67616d0000b273a05c6229569328ac27cc968eab67616d0000b273a42fcd14811bd0c7750d2990ab67616d0000b273b183451ad07f8af6a4bbef68",
+                    "width": 60
+                }
+            ],
+            "name": "K-pop run b",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MzMsYmNiZWQ3MDhhMzY0Yzc0NDU0N2Q3MzllNTIyOWZjNGFlMzU5YWRlYQ==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/5hXVOk1p4bnwZ46UfRKoKd/tracks",
+                "total": 23
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:5hXVOk1p4bnwZ46UfRKoKd"
+        },
+        {
+            "collaborative": false,
+            "description": "Relax to the sound of jazz.",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWVqfgj8NZEp1"
+            },
+            "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWVqfgj8NZEp1",
+            "id": "37i9dQZF1DWVqfgj8NZEp1",
+            "images": [
+                {
+                    "height": null,
+                    "url": "https://i.scdn.co/image/ab67706f000000038df7fedfed909f10628586fe",
+                    "width": null
+                }
+            ],
+            "name": "Coffee Table Jazz",
+            "owner": {
+                "display_name": "Spotify",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/spotify"
+                },
+                "href": "https://api.spotify.com/v1/users/spotify",
+                "id": "spotify",
+                "type": "user",
+                "uri": "spotify:user:spotify"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MTYxNDkyMDQ2MCwwMDAwMDA2ZTAwMDAwMTc4MDBjMmE4NjYwMDAwMDE2ZDAwY2EyYTc2",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWVqfgj8NZEp1/tracks",
+                "total": 146
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:37i9dQZF1DWVqfgj8NZEp1"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/6pbkI5cSTPhgENSF9mNuHf"
+            },
+            "href": "https://api.spotify.com/v1/playlists/6pbkI5cSTPhgENSF9mNuHf",
+            "id": "6pbkI5cSTPhgENSF9mNuHf",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b2732c3fd06b0b185e346da9641fab67616d0000b2735b9c332f9f76cabc137e400fab67616d0000b27372d674be73fb8100238c4dd7ab67616d0000b27380dc3aa20b621abdc4c18bc6",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b2732c3fd06b0b185e346da9641fab67616d0000b2735b9c332f9f76cabc137e400fab67616d0000b27372d674be73fb8100238c4dd7ab67616d0000b27380dc3aa20b621abdc4c18bc6",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b2732c3fd06b0b185e346da9641fab67616d0000b2735b9c332f9f76cabc137e400fab67616d0000b27372d674be73fb8100238c4dd7ab67616d0000b27380dc3aa20b621abdc4c18bc6",
+                    "width": 60
+                }
+            ],
+            "name": "Suuun",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MTQsYjRmYTMzYjY2NWRhMDY0NjExMDViZDY3YzkzODUyZmI3YTY1ZjIyNA==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/6pbkI5cSTPhgENSF9mNuHf/tracks",
+                "total": 33
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:6pbkI5cSTPhgENSF9mNuHf"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/6FfFc9SpKwXF723Ma2E8sj"
+            },
+            "href": "https://api.spotify.com/v1/playlists/6FfFc9SpKwXF723Ma2E8sj",
+            "id": "6FfFc9SpKwXF723Ma2E8sj",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b2733ab585882073341a2d1cf34fab67616d0000b2739ac61b549ad39e5af30e340eab67616d0000b2739c992e56b06bfe14f2a7329cab67616d0000b273ffce27a5dbb342d2c2d738c4",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b2733ab585882073341a2d1cf34fab67616d0000b2739ac61b549ad39e5af30e340eab67616d0000b2739c992e56b06bfe14f2a7329cab67616d0000b273ffce27a5dbb342d2c2d738c4",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b2733ab585882073341a2d1cf34fab67616d0000b2739ac61b549ad39e5af30e340eab67616d0000b2739c992e56b06bfe14f2a7329cab67616d0000b273ffce27a5dbb342d2c2d738c4",
+                    "width": 60
+                }
+            ],
+            "name": "Download",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "NDAsOWYzMGIzNTlhZjA5YzVhZmFlNDgwZDY5NDZhZTE0MTgzMTViMTRmZA==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/6FfFc9SpKwXF723Ma2E8sj/tracks",
+                "total": 107
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:6FfFc9SpKwXF723Ma2E8sj"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/4t8VPqwztcz9kYoSYG4XHJ"
+            },
+            "href": "https://api.spotify.com/v1/playlists/4t8VPqwztcz9kYoSYG4XHJ",
+            "id": "4t8VPqwztcz9kYoSYG4XHJ",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b27316aaf05fe82237576a7d0e38ab67616d0000b27321ac9e410c539b7508bcd3cbab67616d0000b273aff6573c5110e0732fbab3d8ab67616d0000b273f8560af696925c50080dcc35",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b27316aaf05fe82237576a7d0e38ab67616d0000b27321ac9e410c539b7508bcd3cbab67616d0000b273aff6573c5110e0732fbab3d8ab67616d0000b273f8560af696925c50080dcc35",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b27316aaf05fe82237576a7d0e38ab67616d0000b27321ac9e410c539b7508bcd3cbab67616d0000b273aff6573c5110e0732fbab3d8ab67616d0000b273f8560af696925c50080dcc35",
+                    "width": 60
+                }
+            ],
+            "name": "Motown",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MTEsNDJiMTAzNDA3MTdhMTcxNzhkZDFjOWRmZjFhNGNhOTU5ZDU5YjhiNA==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/4t8VPqwztcz9kYoSYG4XHJ/tracks",
+                "total": 22
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:4t8VPqwztcz9kYoSYG4XHJ"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/22IHigYVsCaDy7vkrLqThL"
+            },
+            "href": "https://api.spotify.com/v1/playlists/22IHigYVsCaDy7vkrLqThL",
+            "id": "22IHigYVsCaDy7vkrLqThL",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab67616d0000b27315784f5212050cf2e67f1935",
+                    "width": 640
+                }
+            ],
+            "name": "Folk",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MiwwY2Q1NmM3MzE3YTNhZTA2ZTdhODk4YjgxMzJiOTllNGZiMDA5ZjE4",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/22IHigYVsCaDy7vkrLqThL/tracks",
+                "total": 1
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:22IHigYVsCaDy7vkrLqThL"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/2Dr9Z584l17RdXuNtuaGpQ"
+            },
+            "href": "https://api.spotify.com/v1/playlists/2Dr9Z584l17RdXuNtuaGpQ",
+            "id": "2Dr9Z584l17RdXuNtuaGpQ",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab67616d0000b27304673b3ef017a7581b96e42f",
+                    "width": 640
+                }
+            ],
+            "name": "Alarm",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MyxmZGViMWM4Zjk1YzI3MmNmNTY1MjUyMjE3OWNlNWVlMDBhN2I5NTYw",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/2Dr9Z584l17RdXuNtuaGpQ/tracks",
+                "total": 2
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:2Dr9Z584l17RdXuNtuaGpQ"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/39sm18q8BAyqumnELlhSaq"
+            },
+            "href": "https://api.spotify.com/v1/playlists/39sm18q8BAyqumnELlhSaq",
+            "id": "39sm18q8BAyqumnELlhSaq",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b27343969ecfe687484121805478ab67616d0000b2739ec4abd35652fafe34ee7dfbab67616d0000b273c9f6a742f2337f938e89f599ab67616d0000b273f5afca350abef8cb830750b1",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b27343969ecfe687484121805478ab67616d0000b2739ec4abd35652fafe34ee7dfbab67616d0000b273c9f6a742f2337f938e89f599ab67616d0000b273f5afca350abef8cb830750b1",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b27343969ecfe687484121805478ab67616d0000b2739ec4abd35652fafe34ee7dfbab67616d0000b273c9f6a742f2337f938e89f599ab67616d0000b273f5afca350abef8cb830750b1",
+                    "width": 60
+                }
+            ],
+            "name": "Hip hop",
+            "owner": {
+                "display_name": "jamesengleback",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/jamesengleback"
+                },
+                "href": "https://api.spotify.com/v1/users/jamesengleback",
+                "id": "jamesengleback",
+                "type": "user",
+                "uri": "spotify:user:jamesengleback"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "NDAsMDJjNjEzZTYxMjcwMjM3Y2Q5ZDdhODViYzA4MTMwZWI2MmY5ZWI3Yg==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/39sm18q8BAyqumnELlhSaq/tracks",
+                "total": 42
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:39sm18q8BAyqumnELlhSaq"
+        },
+        {
+            "collaborative": false,
+            "description": "All the songs featured in the hit Adult Swim TV Series &quot;Rick and Morty&quot;, list maintained by @Frostickle, please tweet me if any songs are missing!",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/0Uj7zRG0av6AdrfQL73tLr"
+            },
+            "href": "https://api.spotify.com/v1/playlists/0Uj7zRG0av6AdrfQL73tLr",
+            "id": "0Uj7zRG0av6AdrfQL73tLr",
+            "images": [
+                {
+                    "height": null,
+                    "url": "https://i.scdn.co/image/ab67706c0000bebbfaedbab89d5db3c94581c85c",
+                    "width": null
+                }
+            ],
+            "name": "Rick and Morty - OST",
+            "owner": {
+                "display_name": "David Ma",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/1231035644"
+                },
+                "href": "https://api.spotify.com/v1/users/1231035644",
+                "id": "1231035644",
+                "type": "user",
+                "uri": "spotify:user:1231035644"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "NDIsZDM5NDAxOWM1YWE2NzYwZjZmOTZkYjYzMTQ0YWYzN2Y0N2JjOGMwZg==",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/0Uj7zRG0av6AdrfQL73tLr/tracks",
+                "total": 48
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:0Uj7zRG0av6AdrfQL73tLr"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/6BXal4mUspbecDNIPP1lkb"
+            },
+            "href": "https://api.spotify.com/v1/playlists/6BXal4mUspbecDNIPP1lkb",
+            "id": "6BXal4mUspbecDNIPP1lkb",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b273775a6bee6c704ec29aec00f4ab67616d0000b273c4370159af71d16473158140ab67616d0000b273eaf07ea57c628b3fea3e3e67ab67616d0000b273fcd3724fba954e6104e4530d",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b273775a6bee6c704ec29aec00f4ab67616d0000b273c4370159af71d16473158140ab67616d0000b273eaf07ea57c628b3fea3e3e67ab67616d0000b273fcd3724fba954e6104e4530d",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b273775a6bee6c704ec29aec00f4ab67616d0000b273c4370159af71d16473158140ab67616d0000b273eaf07ea57c628b3fea3e3e67ab67616d0000b273fcd3724fba954e6104e4530d",
+                    "width": 60
+                }
+            ],
+            "name": "Tunes",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MywxM2FiZjI1YWVlMDcyOWZjODVlMWJkZDQ3MTdhZDBlY2E4MzYyNTM0",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/6BXal4mUspbecDNIPP1lkb/tracks",
+                "total": 9
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:6BXal4mUspbecDNIPP1lkb"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/4XYkh3vDrN4KrKz08cEe7e"
+            },
+            "href": "https://api.spotify.com/v1/playlists/4XYkh3vDrN4KrKz08cEe7e",
+            "id": "4XYkh3vDrN4KrKz08cEe7e",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b2732d86f76b4e373e312f3662b5ab67616d0000b2735a29092213015a1d6d0f731cab67616d0000b273649658cb5c84ddb86a811080ab67616d0000b273e37608ac9405cd4163c20207",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b2732d86f76b4e373e312f3662b5ab67616d0000b2735a29092213015a1d6d0f731cab67616d0000b273649658cb5c84ddb86a811080ab67616d0000b273e37608ac9405cd4163c20207",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b2732d86f76b4e373e312f3662b5ab67616d0000b2735a29092213015a1d6d0f731cab67616d0000b273649658cb5c84ddb86a811080ab67616d0000b273e37608ac9405cd4163c20207",
+                    "width": 60
+                }
+            ],
+            "name": "Smooth",
+            "owner": {
+                "display_name": "Kristian Beckers",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/kbeckers192"
+                },
+                "href": "https://api.spotify.com/v1/users/kbeckers192",
+                "id": "kbeckers192",
+                "type": "user",
+                "uri": "spotify:user:kbeckers192"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "NCwzODQyOGUwZTA3MWJkMDY5ODI0Zjc3OWI5M2FkNDQwMWQ1ZGM1YTRl",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/4XYkh3vDrN4KrKz08cEe7e/tracks",
+                "total": 89
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:4XYkh3vDrN4KrKz08cEe7e"
+        },
+        {
+            "collaborative": false,
+            "description": "",
+            "external_urls": {
+                "spotify": "https://open.spotify.com/playlist/3rX222JqkvUEgWibb3oLdM"
+            },
+            "href": "https://api.spotify.com/v1/playlists/3rX222JqkvUEgWibb3oLdM",
+            "id": "3rX222JqkvUEgWibb3oLdM",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://mosaic.scdn.co/640/ab67616d0000b2732ceedc8c879a1f6784fbeef5ab67616d0000b273796c0744b04db30174704d24ab67616d0000b2739e447b59bd3e2cbefaa31d91ab67616d0000b273f0cc194252888c6658c706ab",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://mosaic.scdn.co/300/ab67616d0000b2732ceedc8c879a1f6784fbeef5ab67616d0000b273796c0744b04db30174704d24ab67616d0000b2739e447b59bd3e2cbefaa31d91ab67616d0000b273f0cc194252888c6658c706ab",
+                    "width": 300
+                },
+                {
+                    "height": 60,
+                    "url": "https://mosaic.scdn.co/60/ab67616d0000b2732ceedc8c879a1f6784fbeef5ab67616d0000b273796c0744b04db30174704d24ab67616d0000b2739e447b59bd3e2cbefaa31d91ab67616d0000b273f0cc194252888c6658c706ab",
+                    "width": 60
+                }
+            ],
+            "name": "Delorean Vocals",
+            "owner": {
+                "display_name": "Mike Deniran",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/user/1156134541"
+                },
+                "href": "https://api.spotify.com/v1/users/1156134541",
+                "id": "1156134541",
+                "type": "user",
+                "uri": "spotify:user:1156134541"
+            },
+            "primary_color": null,
+            "public": true,
+            "snapshot_id": "MjIyLGQyMjZiOGQ0MzcwOWY4MzE5Y2MwNmI3ZDNjNzc2ZWVjZjc4NWZkMWQ=",
+            "tracks": {
+                "href": "https://api.spotify.com/v1/playlists/3rX222JqkvUEgWibb3oLdM/tracks",
+                "total": 24
+            },
+            "type": "playlist",
+            "uri": "spotify:playlist:3rX222JqkvUEgWibb3oLdM"
+        }
+    ],
+    "limit": 20,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 12
+}

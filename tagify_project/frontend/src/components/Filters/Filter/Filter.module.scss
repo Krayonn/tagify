@@ -1,0 +1,23 @@
+@import "../../../master.scss";
+
+.Filter {
+    & {
+        border-radius: 50px;
+        box-shadow: 0 0 1pt 1pt whitesmoke;
+        outline: medium;
+        color:whitesmoke;
+        margin: 0 5px;
+        // width: 70px;
+        padding: $padding-sm;
+        text-align: center;
+        font-size: small;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__active {
+        background-color: $sand;
+        color: $light-black;
+    }
+}

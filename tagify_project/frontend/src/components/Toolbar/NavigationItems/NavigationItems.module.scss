@@ -1,0 +1,78 @@
+@import "../../../master.scss";
+
+.NavigationItem {
+	margin: 10px 0;
+	border-radius: 5px;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	a {
+		color: $light-black;
+		text-decoration: none;
+		width: 100%;
+		box-sizing: border-box;
+		display: block;
+		&:hover {
+			color: $sand;
+		}
+		&:active {
+			color: $sand;
+		}
+	}
+	a.active {
+		color: $sand;
+	}
+}
+
+.NavigationItems {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	height: 100%;
+	border-radius: 5px;
+}
+
+@media (min-width: 500px) {
+	.NavigationItems {
+		flex-flow: row;
+	}
+}
+
+@media (min-width: 500px) {
+	.NavigationItem {
+		margin: 0;
+		display: flex;
+		height: 100%;
+		width: auto;
+		border-radius: 5px;
+
+		align-items: center;
+		a {
+			color: white;
+			height: 100%;
+			padding: 16px 10px;
+			border-radius: 10px;
+			margin: 10px 0;
+
+			border-bottom: 4px solid transparent;
+			&:hover {
+				background-color: $sand;
+				border-bottom: 4px solid $green;
+				color: $light-black;
+			}
+			&:active {
+				background-color: $sand;
+				border-bottom: 4px solid $green;
+				color: $light-black;
+			}
+		}
+		a.active {
+			background-color: $sand;
+			border-bottom: 4px solid $green;
+			color: $light-black;
+		}
+	}
+}
