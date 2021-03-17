@@ -6,7 +6,8 @@ const initialState = {
         refreshToken: null
     },
     authenticated: false,
-    username: null
+    username: null,
+    displayName: null
 };
 
 const retrieveAuthTokens = (state, action) => {
@@ -20,11 +21,11 @@ const retrieveAuthTokens = (state, action) => {
 }
 
 const login = (state, action) => {
-    console.log('In log in')
     return {
         ...state,
         authenticated: true,
-        username: action.username
+        username: action.username,
+        displayName: action.displayName
     }
 }
 

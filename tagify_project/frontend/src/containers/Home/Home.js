@@ -38,7 +38,8 @@ class Home extends Component {
             this.getMusicHandler('albums');
             this.getMusicHandler('playlists');
             this.getMusicHandler('tracks');
-            this.props.onRetrieveTags();
+            console.log('user!', this.props)
+            this.props.onRetrieveTags(this.props.username);
         }
     }
 
@@ -51,12 +52,13 @@ class Home extends Component {
                     const authToken = response.data.access_token
                     const refreshToken = response.data.refresh_token
                     if (authToken) {
+                        this.props.onLogin(response.data.user_profile)
                         this.props.onRetrieveTokens(authToken, refreshToken)
                     }
 
                 })
-                .catch(response => {
-                    console.log('getTokens failed')
+                .catch(err => {
+                    console.log('getTokens failed', err)
                     return this.setState({ placeholder: "Something went wrong!" });
                 })
         }
@@ -90,8 +92,12 @@ class Home extends Component {
         }), {})
 
         console.log(trackTags);
+        const data = {
+            trackTags: trackTags,
+            user: this.props.username
+        }
 
-        axios.post('/api/tagTracks/', trackTags, {
+        axios.post('/api/tagTracks/', data, {
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": cookies.get("csrftoken"),
@@ -127,17 +133,18 @@ class Home extends Component {
         return (
             <div>
                 <Layout>
-                    <Filters setActive={(type) => this.props.onSetTypeActive(type)} currentActive={this.props.typeActive} />
-                    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px' }}>
-                        <input placeholder="my tag!" className={styles.TagSource} value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
-                        <Button clicked={this.saveTagsHandler}>Save</Button>
+                    <header>
+                        <Filters setActive={(type) => this.props.onSetTypeActive(type)} currentActive={this.props.typeActive} />
+                        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '10px' }}>
+                            <input placeholder="my tag!" className={styles.TagSource} value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
+                            <Button clicked={this.saveTagsHandler}>Save</Button>
+                        </div>
+                    </header>
 
-                    </div>
+                </Layout>
                     <div style={{ margin: '10px' }}>
                         {items}
                     </div>
-
-                </Layout>
             </div>
         );
     };
@@ -147,6 +154,7 @@ const mapStateToProps = state => {
     return {
         tokens: state.auth.tokens,
         username: state.auth.username,
+        displayName: state.auth.displayName,
         authenticated: state.auth.authenticated,
         tagSource: state.tag.tagSource,
         tags: state.tag.tags,
@@ -161,9 +169,9 @@ const mapDispatchToProps = dispatch => {
         onChangeTagSource: (input) => dispatch(actions.updateTagSource(input)),
         onSetTypeActive: (type) => dispatch(actions.setTypeActive(type)),
         onSaveMusic: (type, data) => dispatch(actions.saveMusic(type, data)),
-        onLogin: (username) => dispatch(actions.login(username)),
+        onLogin: (token) => dispatch(actions.login(token)),
         onLogout: () => dispatch(actions.logout()),
-        onRetrieveTags: () => dispatch(actions.retrieveTags())
+        onRetrieveTags: (username) => dispatch(actions.retrieveTags(username))
     };
 };
 

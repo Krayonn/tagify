@@ -47,6 +47,7 @@ class Track extends Component {
                         const colour = tag.matchColour ? tag.matchColour : tag.colour
                         // const tagId = Object.keys(allTags[trackId]).find(key => allTags[trackId][key] === tag);
                         return <Tag
+                            key={tag.id}
                             tagName={tag.value}
                             updateTag={(event) => this.updateTagHandler(trackId, tag.id, event)}
                             // updateTag={(event) => this.optUpdateTagHandler(trackId, tagId, event)}
@@ -63,7 +64,7 @@ class Track extends Component {
         const identifier = this.props.image ? 
             <div className={styles.track__art}><img src={this.props.image}/></div> :
             <div className={styles.track__number}>{this.props.trackNumber}</div>
-        console.log('in Track iamge', this.props.image)
+
         return (
             <div className={styles.track}>
 

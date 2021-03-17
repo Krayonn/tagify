@@ -47,9 +47,9 @@ export const retrieveTagsFail = (error) => {
     }
 }
 
-export const retrieveTags = () => {
+export const retrieveTags = (username) => {
     return dispatch => {
-        axios.get('/api/taggedTracks')
+        axios.get('/api/tagTracks?user='+username)
             .then(resp => {
                 console.log('tag rec resp!', resp.data)
 

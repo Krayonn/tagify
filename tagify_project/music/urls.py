@@ -7,7 +7,8 @@ urlpatterns = [
     path('albums/', views.retrieveAlbums),
     path('playlists/', views.retrievePlaylists),
     path('tracks/', views.retrieveTracks),
-    path('taggedTracks/', views.taggedTracks),
+    path('user/', views.retrieveUserProfile),
+    path('tagTracks/', views.taggedTracks),
     path('getTagTracks/', views.TrackList.as_view()),
     path('createPlaylist/', views.createPlaylist)
 ]

@@ -15,6 +15,7 @@ def getToken(authCode):
         'grant_type': 'authorization_code',
         'code': authCode,
         'redirect_uri': 'http://localhost:8000'
+        # 'redirect_uri': 'http://localhost:8080'
     }
 
     headers = {
@@ -33,7 +34,27 @@ def getToken(authCode):
     else:
         print('Something went wrong: ',r)
         return {"message": "Token could not be retrieved", "error": response}
-    return {"access_token": access_token, "refresh_token": refresh_token}
+
+    user_profile = getUserProfile(access_token)
+    return {"access_token": access_token, "refresh_token": refresh_token, "user_profile": user_profile}
+
+def getUserProfile(access_token):
+    headers = {'Authorization': 'Bearer '+access_token}
+
+    r = requests.get('https://api.spotify.com/v1/me/', headers=headers)
+
+    profile_raw = r.content.decode('utf-8')
+    profile_json = json.loads(profile_raw)
+
+    if 'error' in profile_json.keys():
+        print(profile_json)
+        return Response(status=500, data=profile_json)
+
+    user_id = profile_json['id']
+
+    print('User_id', user_id)
+
+    return(profile_json)
 
 def getAlbums(access_token):
     headers = {'Authorization': 'Bearer '+access_token}
@@ -41,9 +62,9 @@ def getAlbums(access_token):
     r = requests.get('https://api.spotify.com/v1/me/albums', headers=headers)
     albums_raw = r.content.decode('utf-8')
 
-    _json = json.loads(albums_raw)
+    albums_json = json.loads(albums_raw)
     albums = []
-    for album in _json['items']:
+    for album in albums_json['items']:
         album = album['album']
         tracks = [{
                     'id': track['id'],
@@ -68,16 +89,16 @@ def getPlaylists(access_token):
 
     r = requests.get('https://api.spotify.com/v1/me/playlists', headers=headers)
     playlists_raw = r.content.decode('utf-8')
-    _json = json.loads(playlists_raw)
+    playlists_json = json.loads(playlists_raw)
     playlists = []
-    for playlist in _json['items']:
+    for playlist in playlists_json['items']:
         tracks_href = playlist['tracks']['href']
         r = requests.get(tracks_href, headers=headers)
         playlists_tracks_raw = r.content.decode('utf-8')
-        _json_tracks = json.loads(playlists_tracks_raw)
+        tracks_json = json.loads(playlists_tracks_raw)
         tracks = []
         counter = 1
-        for track in _json_tracks['items']:
+        for track in tracks_json['items']:
             track = track['track']
             tracks.append({
                 'id': track['id'],
@@ -114,24 +135,16 @@ def getTracks(access_token):
         })
     return tracks
 
-def createPlaylistsFromTags(access_token, request):
+def createPlaylistsFromTags(access_token, user, request):
     print('in createPlaylistsFromTags', request)
     request_data = request.data
     chosen_tags=request_data['chosenTags']
-
-    # Get user id
     headers = {'Authorization': 'Bearer '+access_token}
 
-    r = requests.get('https://api.spotify.com/v1/me/', headers=headers)
+    # Get user id
+    profile_json = getUserProfile(access_token)
 
-    profile_raw = r.content.decode('utf-8')
-    _json = json.loads(profile_raw)
-
-    if 'error' in _json.keys():
-        print(_json)
-        return Response(status=500, data=_json)
-
-    user_id = _json['id']
+    user_id = profile_json['id']
 
     print('User_id', user_id)
 
@@ -156,7 +169,7 @@ def createPlaylistsFromTags(access_token, request):
     
     tracks = []
     for tag in chosen_tags:
-        tracks += Track.objects.filter(tags__contains="'"+tag+"'").filter(user=request.user.username).distinct().order_by()
+        tracks += Track.objects.filter(tags__contains="'"+tag+"'").filter(user=user).distinct().order_by()
 
     # to get distinct values as that isn't working in above db call...
     print('tracks: ', tracks)
@@ -174,14 +187,7 @@ def createPlaylistsFromTags(access_token, request):
     r = requests.post(f'https://api.spotify.com/v1/playlists/{playlist_id}/tracks', headers=headers, data=json.dumps(data))
 
     playlist_raw = r.content.decode('utf-8')
-    _json = json.loads(playlist_raw)
+    playlist_json = json.loads(playlist_raw)
 
-    print('added to playlist',_json)
+    print('added to playlist',playlist_json)
     return Response(status=200, data={'playlist_url': playlist_url, 'playlist_name': playlist_name})
-    
-
-# p=(getPlaylists('BQAWz2Cu_DNkG6L3veMDP-QPmNpCKPUIRdrMg6_rPZiX0li330J506o0FSBqg9vH4Nf0OhQDNgPR6kFv-gclkB3Tvg-7i7zpLJOnfMwbrKYgHZVXK9sDcOZjjG8t7J4nR-fJwuumuFuL9jBtNnnKebNw63BElTUy'))
-# print(p[''])      
-
-
-# getAlbums('test')

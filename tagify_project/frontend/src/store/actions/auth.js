@@ -8,12 +8,15 @@ export const retrieveAuthTokens = (authToken, refreshToken) => {
     };
 }
 
-export const login = (username) => {
+export const login = (userProfile) => {
+    console.log('in login red', userProfile)
     return {
         type: actionTypes.LOGIN,
-        username: username
+        username: userProfile.id,
+        displayName: userProfile.display_name
     }
 }
+
 
 export const logout = () => {
     return {

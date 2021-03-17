@@ -4,16 +4,13 @@ from .serializers import AlbumSerializer, TrackSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .retrieveMusic import getToken, getAlbums, getPlaylists, getTracks, createPlaylistsFromTags
+from .retrieveMusic import getToken, getUserProfile, getAlbums, getPlaylists, getTracks, createPlaylistsFromTags
 import json
 
 class TrackList(generics.ListAPIView):
     # Lists all Tracks
     queryset = Track.objects.all()
     serializer_class = TrackSerializer
-    # Add filtering via query params
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['compound_id', 'num_rings']
 
 @api_view((['GET']))
 def hello_world(request):
@@ -24,7 +21,12 @@ def hello_world(request):
 def retrieveToken(request):
     params = request.query_params
     data = getToken(params['authCode'])
-        
+    return Response(data)
+
+@api_view((['GET']))
+def retrieveUserProfile(request):
+    params = request.query_params
+    data = getUserProfile(params['token'])
     return Response(data)
 
 @api_view((['GET']))
@@ -47,10 +49,12 @@ def retrieveTracks(request):
 
 @api_view((['POST','GET']))
 def taggedTracks(request):
-
+    
     if request.method == 'GET':
-        # tracks = Track.objects.filter(user=request.user.username).distinct().order_by()
-        tracks = Track.objects.filter(user='user1').distinct().order_by()
+        params = request.query_params
+        user = params['user']
+        tracks = Track.objects.filter(user=user).distinct().order_by()
+        print('query!', params)
         data = {}
         for track in tracks:
             data[track.track_id] = track.tags
@@ -58,17 +62,20 @@ def taggedTracks(request):
 
     elif request.method == 'POST':
         print('Request in post',request.data)
-        print('User making request', request.user)
-        for track in request.data:
+        user = request.data['user']
+        tracks = request.data['trackTags']
+        print('User making request', user)
+        for track in tracks:
             print('TRACK', track)
-            print(str(request.data[track]))
-            trackd = Track.objects.update_or_create(track_id=track, tags=str(request.data[track]), user=request.user.username)
+            print(str(tracks[track]))
+            trackd = Track.objects.update_or_create(track_id=track, tags=str(tracks[track]), user=user)
             print('Added new track with it\'s tags to database: ',track)
         return Response(status=200)   
 
 @api_view((['POST']))
 def createPlaylist(request):
     print('Request in post',request.data)
-    params = request.query_params
-    resp = createPlaylistsFromTags(params['token'], request)
+    access_token = request.headers['Authorisation']
+    user = request.headers['User']
+    resp = createPlaylistsFromTags(access_token, user, request)
     return resp

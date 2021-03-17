@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 
 import Spinner from '../Spinner/Spinner';
+import Button from '../UI/Button/Button';
 import ReadOnlyTag from './ReadOnlyTag/ReadOnlyTag';
 import * as actions from '../../store/actions/index';
 import axios from '../../axios';
@@ -41,6 +42,8 @@ class CreatePlaylist extends Component {
             headers: {
                 'Content-Type': 'application/json',
                 "X-CSRFToken": cookies.get("csrftoken"),
+                "Authorisation": this.props.tokens.authToken,
+                "User": this.props.username
             },
             credentials: "same-origin"
         })
@@ -86,11 +89,11 @@ class CreatePlaylist extends Component {
             )
         }
         return (
-            <div className={styles.createPlaylist}>
+            <div className={styles.CreatePlaylist}>
                 <p>Select the tags you want for your playlist</p>
                 {tagBoxes}
                 <p>Click here to create a new playlist!</p>
-                <button onClick={this.createPlaylistHandler}>Create</button>
+                <Button clicked={this.createPlaylistHandler}>Create</Button>
                 {item}
             </div>
         )
@@ -101,6 +104,7 @@ class CreatePlaylist extends Component {
 const mapStateToProps = state => {
     return {
         tokens: state.auth.tokens,
+        username: state.auth.username,
         tags: state.tag.tags
     }
 
