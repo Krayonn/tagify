@@ -14,7 +14,8 @@ def getToken(authCode):
     data = {
         'grant_type': 'authorization_code',
         'code': authCode,
-        'redirect_uri': 'http://localhost:8000'
+        'redirect_uri': 'http://tagify.eu.pythonanywhere.com'
+        # 'redirect_uri': 'http://localhost:8000'
         # 'redirect_uri': 'http://localhost:8080'
     }
 

@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dr$b$xm0)0stb0uv6(cog!z1nns5=&woj(986%74o1fosu7f=n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tagify.eu.pythonanywhere.com"]
 
 
 # Application definition
@@ -140,5 +140,7 @@ MEDIA_ROOT = (
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    "tagify.eu.pythonanywhere.com"
+    
 ]
