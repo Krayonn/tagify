@@ -10,7 +10,6 @@ const readOnlyTag = (props) => {
         purple: scssStyles.Tag__purple,
         orange: scssStyles.Tag__orange,
     }
-    console.log('colour',props.colour)
 
     return (
         <div className={scssStyles.Tag + ' ' + tagColours[props.colour]}>

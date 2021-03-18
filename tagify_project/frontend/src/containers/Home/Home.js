@@ -27,18 +27,15 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log('MOUNTING')
         this.retrieveTokensHandler()
 
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.tokens && this.props.tokens !== prevProps.tokens) {
-            console.log('Componet did update');
             this.getMusicHandler('albums');
             this.getMusicHandler('playlists');
             this.getMusicHandler('tracks');
-            console.log('user!', this.props)
             this.props.onRetrieveTags(this.props.username);
         }
     }
@@ -48,7 +45,6 @@ class Home extends Component {
         if (!this.props.tokens.authToken && params['code']) {
             axios.get('/api/token?authCode=' + params['code'])
                 .then(response => {
-                    console.log('got tokens!', response.data.access_token)
                     const authToken = response.data.access_token
                     const refreshToken = response.data.refresh_token
                     if (authToken) {
@@ -67,20 +63,17 @@ class Home extends Component {
     getMusicHandler = (type) => {
         axios.get("/api/" + type + "?token=" + this.props.tokens.authToken)
             .then(response => {
-                console.log('got ' + type)
                 this.props.onSaveMusic(type, response.data)
             })
             .catch(error => {
                 this.setState(() => { placeholder: "Something went wrong!" })
-                console.log('Something went wrong')
+                console.log('Something went wrong getting music', error)
                 return error;
             })
 
     }
 
     saveTagsHandler = () => {
-        console.log('In save tags')
-
         const trackTags = Object.entries(this.props.tags).map(
             track => ({
                 id: [track[0]],
@@ -91,7 +84,6 @@ class Home extends Component {
             [item.id]: item.tags
         }), {})
 
-        console.log(trackTags);
         const data = {
             trackTags: trackTags,
             user: this.props.username
@@ -104,14 +96,15 @@ class Home extends Component {
             },
             credentials: "same-origin"
         })
-            .then(res => console.log(res));
+            .then(res => console.log(res))
+            .catch(err => {
+                console.log('Something went wrong tagging tracks:', err)
+            })
     }
 
     render() {
 
         let items = null;
-        console.log('state', this.state)
-        console.log('typeActive', this.props.typeActive)
         if (this.props.tokens.authToken && !this.props.musicData[this.props.typeActive]) {
             items = <Spinner />
             console.log('waiting...')

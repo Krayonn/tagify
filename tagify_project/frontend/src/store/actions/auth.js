@@ -9,7 +9,6 @@ export const retrieveAuthTokens = (authToken, refreshToken) => {
 }
 
 export const login = (userProfile) => {
-    console.log('in login red', userProfile)
     return {
         type: actionTypes.LOGIN,
         username: userProfile.id,

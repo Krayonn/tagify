@@ -48,10 +48,11 @@ class CreatePlaylist extends Component {
             credentials: "same-origin"
         })
             .then(res => {
-                console.log(res);
                 this.setState({loading: false});
-                console.log('playlist name', res.data.playlist_name)
                 this.setState({playlistName: res.data.playlist_name, playlistHref: res.data.playlist_url})
+            })
+            .catch(err => {
+                console.log("Something went wrong creating the playlist: ",err)
             })
     }
 

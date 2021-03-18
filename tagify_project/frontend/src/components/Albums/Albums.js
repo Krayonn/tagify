@@ -1,5 +1,5 @@
 import React from 'react';
-import scssStyles from './Albums.module.scss';
+import styles from './Albums.module.scss';
 import Album from './Album/Album';
 
 const albums = (props) => {
@@ -26,9 +26,9 @@ const albums = (props) => {
     }
     return (
         <div>
-            <div className={scssStyles.tracks}>
+            <div className={styles.tracks}>
                 {albums}
-                <div className={scssStyles.track}>
+                <div className={styles.track}>
                 </div>
             </div>
         </div>

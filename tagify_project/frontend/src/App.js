@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import Home from './containers/Home/Home';
 import Layout from './containers/Layout/Layout';
 import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist";
-import Login from "./containers/Login/Login";
 import authReducer from './store/reducers/auth'
 import musicReducer from './store/reducers/music'
 import tagReducer from './store/reducers/tag'
@@ -36,7 +35,6 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route path="/createPlaylist" component={CreatePlaylist} />
-              <Route path="/login" component={Login} />
               <Route path="/" component={Home} />
             </Switch>
           </Layout>

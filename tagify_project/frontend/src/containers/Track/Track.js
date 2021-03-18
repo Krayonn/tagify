@@ -2,22 +2,10 @@ import React, { Component } from 'react';
 import styles from './Track.module.scss';
 import { connect } from 'react-redux';
 
-import Tag from '../../Tag/Tag';
-import * as actions from '../../../store/actions/index'
+import Tag from '../../components/Tag/Tag';
+import * as actions from '../../store/actions/index'
 
 class Track extends Component {
-
-    // debounce = (func, delay) => {
-    //     let debounceTimer;
-    //     console.log('Debounce!')
-    //     return function () {
-    //         const context = this;
-    //         const args = arguments;
-    //         clearTimeout(debounceTimer);
-    //         debounceTimer =
-    //         setTimeout(() => func.apply(context, args), delay);
-    //     }
-    // }
 
     addTagHandler = (trackId, tagName) => {
         if (!this.props.tags[trackId] || !Object.values(this.props.tags[trackId]).includes(tagName)) {
@@ -26,7 +14,6 @@ class Track extends Component {
     }
 
     removeTagHandler = (trackId, tagId) => {
-        console.log('remove tag handler')
         this.props.onRemoveTag(trackId, tagId)
     }
 
@@ -34,8 +21,6 @@ class Track extends Component {
         event.persist();
         this.props.onUpdateTag(trackId, tagId, event.target.value);
     }
-
-    // optUpdateTagHandler = this.debounce(this.updateTagHandler, 500)
 
     render() {
         let tags = null;
@@ -50,7 +35,6 @@ class Track extends Component {
                             key={tag.id}
                             tagName={tag.value}
                             updateTag={(event) => this.updateTagHandler(trackId, tag.id, event)}
-                            // updateTag={(event) => this.optUpdateTagHandler(trackId, tagId, event)}
                             deleteTag={() => this.removeTagHandler(trackId, tag.id)}
                             colour={colour}
                             tagId={tag.id}

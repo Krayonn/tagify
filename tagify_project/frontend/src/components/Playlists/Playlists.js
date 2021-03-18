@@ -1,5 +1,5 @@
 import React from 'react';
-import scssStyles from './Playlists.module.scss';
+import styles from './Playlists.module.scss';
 import Playlist from './Playlist/Playlist';
 
 const playlists = (props) => {
@@ -24,9 +24,9 @@ const playlists = (props) => {
     }
     return (
         <div>
-            <div className={scssStyles.tracks}>
+            <div className={styles.tracks}>
                 {playlists}
-                <div className={scssStyles.track}>
+                <div className={styles.track}>
                 </div>
             </div>
         </div>

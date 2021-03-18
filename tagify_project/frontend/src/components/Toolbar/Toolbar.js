@@ -1,9 +1,7 @@
 import React from 'react';
 
 import styles from './Toolbar.module.scss';
-// import Logo from '../../Logo/Logo';
 import NavigationItems from './NavigationItems/NavigationItems';
-// import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 import Button from '../UI/Button/Button';
 
 const scopes = ['user-library-read','playlist-modify-private'];
@@ -22,9 +20,8 @@ const toolbar = ( props ) => {
         
     return (
     <header className={styles.Toolbar}>
-        {/* <DrawerToggle clicked={props.drawerToggleClicked} /> */}
 
-        <h1>Tagifyyy</h1>
+        <h1>Tagify</h1>
         {authButton}
         <nav>
             <NavigationItems login={() => authHandler()} logout={props.logout} isAuth={props.isAuth}/>

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import styles from './Login.module.scss';
 import { connect } from 'react-redux';
 
-import axios from '../../axios';
+import axios from '../../src/axios';
 import Cookies from "universal-cookie";
-import * as actions from '../../store/actions/index';
+import * as actions from '../../src/store/actions/index';
 
 const cookies = new Cookies();
 
@@ -43,13 +43,12 @@ class Login extends Component {
             })
             .then(this.isResponseOk)
             .then(data => {
-                console.log(data);
                 this.setState({ isAuthenticated: true, username: "", password: "", error: "" });
                 this.props.onLogin(this.state.username)
                 this.props.history.push('/')
             })
             .catch(err => {
-                console.log(err);
+                console.log("Something went wrong siging up", err);
                 this.setState({ error: "Username not available :(" });
             });
     }
@@ -67,7 +66,6 @@ class Login extends Component {
             })
             .then(this.isResponseOk)
             .then(data => {
-                console.log('In log in', data);
                 this.setState({ isAuthenticated: true, username: "", password: "", error: "" });
                 this.props.onLogin(this.state.username)
                 this.props.history.push('/')
@@ -83,7 +81,6 @@ class Login extends Component {
             { credentials: "same-origin" })
             .then(this.isResponseOk)
             .then((data) => {
-                console.log(data);
                 this.setState({ isAuthenticated: false });
                 this.props.onLogout()
             })

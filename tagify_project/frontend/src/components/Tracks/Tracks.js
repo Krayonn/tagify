@@ -1,12 +1,11 @@
 import React from 'react';
-import scssStyles from './Tracks.module.scss';
-import Track from './Track/Track';
+import styles from './Tracks.module.scss';
+import Track from '../../containers/Track/Track';
 
 const tracks = (props) => {
 
 
     let tracks = null;
-    console.log('in tracks props', props)
     if (props.tracks) {
         tracks = (
             props.tracks.map(track => {
@@ -26,7 +25,7 @@ const tracks = (props) => {
         )
     }
     return (
-        <div className={scssStyles.tracks} >
+        <div className={styles.tracks} >
             {tracks}
         </div>
 

@@ -76,7 +76,6 @@ const updateTagSource = (state, action) => {
 }
 
 const retrieveTags = (state, action) => {
-    console.log('in red rec tag', action)
     return {
         ...state,
         tags: {
