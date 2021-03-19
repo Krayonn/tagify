@@ -14,12 +14,8 @@ module.exports = () => {
   // create a nice object from the env variable
   const envKeys = Object.keys(env).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(env[next]);
-    console.log('ENVKEY', JSON.stringify(env[next]))
     return prev;
   }, {});
-
-  console.log('ENV', envKeys);
-
 
   return {
     devtool: 'cheap-module-eval-source-map',
