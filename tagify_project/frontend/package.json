@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./webpack.config.js",
     "dev": "webpack --mode development --entry ./src/index.js --output-path ./static/frontend",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production --entry ./src/index.js --output-path ./static/frontend"
   },
   "author": "Me",
   "license": "ISC",
