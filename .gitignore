@@ -130,3 +130,5 @@ dmypy.json
 
 #REACT
 node_modules/
+
+tagify_project/frontend/static/frontend/
