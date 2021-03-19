@@ -47,7 +47,7 @@
 		display: flex;
 		height: 100%;
 		width: auto;
-		border-radius: 5px;
+		border-radius: 2px;
 
 		align-items: center;
 		a {
@@ -60,18 +60,15 @@
 			border-bottom: 4px solid transparent;
 			&:hover {
 				background-color: $sand;
-				border-bottom: 4px solid $green;
 				color: $light-black;
 			}
 			&:active {
 				background-color: $sand;
-				border-bottom: 4px solid $green;
 				color: $light-black;
 			}
 		}
 		a.active {
 			background-color: $sand;
-			border-bottom: 4px solid $green;
 			color: $light-black;
 		}
 	}

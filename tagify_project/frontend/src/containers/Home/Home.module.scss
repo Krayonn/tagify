@@ -3,7 +3,6 @@
 body {
   background: $black;
   font-family: 'Roboto', sans-serif;
-  margin: 10px;
   a {
     color: $grey;
     
@@ -14,3 +13,30 @@ body {
   
 }
 
+.Home {
+  &__controls {
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    background-color: $black;
+    &__input {
+        display: flex;
+        justify-content: left;
+        margin: 10px
+    }
+  }
+
+  &__music {
+    position: relative;
+    top: 100px;
+    z-index: 1;
+    background: blueviolet;
+  }
+}
+
+.TagSource {
+  padding: 7px;
+  border-radius: 10px;
+  border: None;
+}

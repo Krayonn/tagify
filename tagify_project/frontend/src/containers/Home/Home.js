@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 
@@ -8,7 +7,6 @@ import Albums from '../../components/Albums/Albums';
 import Playlists from "../../components/Playlists/Playlists";
 import Tracks from '../../components/Tracks/Tracks';
 import styles from './Home.module.scss';
-import Layout from '../Layout/Layout';
 import Filters from '../../components/Filters/Filters';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
@@ -122,23 +120,19 @@ class Home extends Component {
                     break;
             }
         }
-
         return (
             <div>
-                <Layout>
-                    <header>
-                        <Filters setActive={(type) => this.props.onSetTypeActive(type)} currentActive={this.props.typeActive} />
-                        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '10px' }}>
-                            <input placeholder="my tag!" className={styles.TagSource} value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
-                            <Button clicked={this.saveTagsHandler}>Save</Button>
-                        </div>
-                    </header>
-
-                </Layout>
-                    <div style={{ margin: '10px' }}>
-                        {items}
+                <div className={styles.Home__controls}>
+                    <Filters setActive={(type) => this.props.onSetTypeActive(type)} currentActive={this.props.typeActive} />
+                    <div className={styles.Home__controls__input}>
+                        <input placeholder="my tag!" className={styles.TagSource} value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
+                        <Button clicked={this.saveTagsHandler}>Save</Button>
                     </div>
-            </div>
+                </div>
+                <div className={styles.Home__music}>
+                    {items}
+                </div>
+            </div >
         );
     };
 }

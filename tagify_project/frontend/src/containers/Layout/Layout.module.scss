@@ -23,21 +23,6 @@
 }
 
 .Content {
-    margin-top: 72px;
+    margin-top: 55px;
 }
 
-@media (max-width: 1200px) {
-  .track {
-    &__title {
-      width: auto !important;
-    }
-
-    &__explicit {
-      display: none;
-    }
-
-    &__popularity {
-      display: none;
-    }
-  }
-}
