@@ -10,6 +10,7 @@ import styles from './Home.module.scss';
 import Filters from '../../components/Filters/Filters';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
+import MiniSpinner from '../../components/Spinner/MiniSpinner';
 import axios from '../../axios';
 import Cookies from "universal-cookie";
 
@@ -19,12 +20,12 @@ class Home extends Component {
     state = {
         loaded: false,
         placeholder: "Loading",
-        albums: null,
-        playlists: null,
-        tracks: null
+        savedTags: false
+
     }
 
     componentDidMount() {
+        console.log('envs api url', process.env.API_URL)
         this.retrieveTokensHandler()
 
     }
@@ -94,7 +95,10 @@ class Home extends Component {
             },
             credentials: "same-origin"
         })
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+
+                })
             .catch(err => {
                 console.log('Something went wrong tagging tracks:', err)
             })
@@ -120,6 +124,17 @@ class Home extends Component {
                     break;
             }
         }
+        let tagState = null;
+        if (this.state.savedTags === 'loading') {
+            tagState = <MiniSpinner />
+        }
+        else if (this.state.savedTags) {
+            tagState = 'Saved!'
+        }
+        else if (!this.state.savedTags) {
+            tagState = null
+        }
+
         return (
             <div>
                 <div className={styles.Home__controls}>
@@ -127,6 +142,7 @@ class Home extends Component {
                     <div className={styles.Home__controls__input}>
                         <input placeholder="my tag!" className={styles.TagSource} value={this.props.tagSource} onChange={(event) => this.props.onChangeTagSource(event.target.value)} />
                         <Button clicked={this.saveTagsHandler}>Save</Button>
+                        {tagState}
                     </div>
                 </div>
                 <div className={styles.Home__music}>

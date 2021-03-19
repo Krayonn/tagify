@@ -11,10 +11,11 @@ from rest_framework.response import Response
 def getToken(authCode):
     print('Auth code: ',authCode)
     load_dotenv()
+    print('REDIRECT',os.getenv("REDIRECT_URL"))
     data = {
         'grant_type': 'authorization_code',
         'code': authCode,
-        'redirect_uri': 'https://tagify.eu.pythonanywhere.com'
+        'redirect_uri': os.getenv("REDIRECT_URL")
         # 'redirect_uri': 'http://localhost:8000'
         # 'redirect_uri': 'http://localhost:8080'
     }

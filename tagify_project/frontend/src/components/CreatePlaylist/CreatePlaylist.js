@@ -36,7 +36,7 @@ class CreatePlaylist extends Component {
     createPlaylistHandler = () => {
         const params = queryString.parse(this.props.location.search)
         this.setState({loading: true});
-        axios.post('/api/createPlaylist/?token=' + this.props.tokens.authToken,
+        axios.post('api/createPlaylist/?token=' + this.props.tokens.authToken,
         { chosenTags: this.state.selectedTags },
         {
             headers: {
