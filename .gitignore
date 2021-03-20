@@ -133,3 +133,4 @@ node_modules/
 
 /tagify_project/frontend/static/frontend
 tagify_project/frontend/static/frontend/main.js
+main.js
