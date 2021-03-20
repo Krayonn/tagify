@@ -132,3 +132,4 @@ dmypy.json
 node_modules/
 
 static/frontend/
+/tagify_project/frontend/static/frontend
