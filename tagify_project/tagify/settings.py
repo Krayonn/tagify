@@ -28,7 +28,7 @@ SECRET_KEY = 'dr$b$xm0)0stb0uv6(cog!z1nns5=&woj(986%74o1fosu7f=n'
 load_dotenv()
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ["https://tagify.eu.pythonanywhere.com", "localhost"]
+ALLOWED_HOSTS = ["tagify.eu.pythonanywhere.com", "localhost"]
 
 
 # Application definition
