@@ -2,10 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     tagSource: '',
-    tags: {
-        'testTrackid1': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' }],
-        'testTrackid2': [{ id: 1, value: 'testTag', colour: 'green', matchColour: 'green' },{ id: 2, value: 'testTag2', colour: 'green', matchColour: 'green' }]
-    }
+    tags: {}
 };
 
 const addTag = (state, action) => {

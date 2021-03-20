@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import Home from './containers/Home/Home';
 import Layout from './containers/Layout/Layout';
-import CreatePlaylist from "./components/CreatePlaylist/CreatePlaylist";
+import CreatePlaylist from './containers/CreatePlaylist/CreatePlaylist';
 import authReducer from './store/reducers/auth'
 import musicReducer from './store/reducers/music'
 import tagReducer from './store/reducers/tag'
