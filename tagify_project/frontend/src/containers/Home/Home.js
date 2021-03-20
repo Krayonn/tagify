@@ -33,8 +33,8 @@ class Home extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.tokens && this.props.tokens !== prevProps.tokens) {
             this.getMusicHandler('albums');
-            this.getMusicHandler('playlists');
             this.getMusicHandler('tracks');
+            this.getMusicHandler('playlists');
             this.props.onRetrieveTags(this.props.username);
         }
     }
@@ -42,7 +42,7 @@ class Home extends Component {
     retrieveTokensHandler = () => {
         const params = queryString.parse(this.props.location.search)
         if (!this.props.tokens.authToken && params['code']) {
-            axios.get('/api/token?authCode=' + params['code'])
+            axios.get('/api/token/?authCode=' + params['code'])
                 .then(response => {
                     const authToken = response.data.access_token
                     const refreshToken = response.data.refresh_token
@@ -60,7 +60,9 @@ class Home extends Component {
     }
 
     getMusicHandler = (type) => {
-        axios.get("/api/" + type + "?token=" + this.props.tokens.authToken)
+        console.log('base in music', process.env.API_URL)
+        
+        axios.get("/api/" + type + "/?token=" + this.props.tokens.authToken)
             .then(response => {
                 this.props.onSaveMusic(type, response.data)
             })
@@ -73,6 +75,8 @@ class Home extends Component {
     }
 
     saveTagsHandler = () => {
+        this.setState({savedTags: 'loading'})
+
         const trackTags = Object.entries(this.props.tags).map(
             track => ({
                 id: [track[0]],
@@ -88,6 +92,7 @@ class Home extends Component {
             user: this.props.username
         }
 
+
         axios.post('/api/tagTracks/', data, {
             headers: {
                 "Content-Type": "application/json",
@@ -96,6 +101,8 @@ class Home extends Component {
             credentials: "same-origin"
         })
             .then(res => {
+            this.setState({savedTags: true})
+
                 console.log(res);
 
                 })

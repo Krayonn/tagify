@@ -49,7 +49,7 @@ export const retrieveTagsFail = (error) => {
 
 export const retrieveTags = (username) => {
     return dispatch => {
-        axios.get('/tagTracks?user='+username)
+        axios.get('/api/tagTracks/?user='+username)
             .then(resp => {
                 let tags = {};
                 let count = 0

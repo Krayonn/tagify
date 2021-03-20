@@ -147,3 +147,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://tagify.eu.pythonanywhere.com"
     
 ]
+
+# without this redirected urls with appended slash are messed up :(
+APPEND_SLASH = False
