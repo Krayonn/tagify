@@ -25,7 +25,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log('envs api url', process.env.API_URL)
         this.retrieveTokensHandler()
 
     }
@@ -60,8 +59,6 @@ class Home extends Component {
     }
 
     getMusicHandler = (type) => {
-        console.log('base in music', process.env.API_URL)
-        
         axios.get("/api/" + type + "/?token=" + this.props.tokens.authToken)
             .then(response => {
                 this.props.onSaveMusic(type, response.data)
@@ -119,6 +116,7 @@ class Home extends Component {
             console.log('waiting...')
         }
         else {
+            console.log('Done!')
             switch (this.props.typeActive) {
                 case 'albums':
                     items = <Albums albums={this.props.musicData.albums} />;
