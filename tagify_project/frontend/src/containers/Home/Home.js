@@ -13,6 +13,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import MiniSpinner from '../../components/Spinner/MiniSpinner';
 import axios from '../../axios';
 import Cookies from "universal-cookie";
+import Welcome from '../../components/Welcome/Welcome';
 
 const cookies = new Cookies();
 
@@ -109,14 +110,14 @@ class Home extends Component {
     }
 
     render() {
-
         let items = null;
-        if (this.props.tokens.authToken && !this.props.musicData[this.props.typeActive]) {
+        if (!this.props.tokens.authToken) {
+            items = <Welcome/>;
+        }
+        else if (this.props.tokens.authToken && !this.props.musicData[this.props.typeActive]) {
             items = <Spinner />
-            console.log('waiting...')
         }
         else {
-            console.log('Done!')
             switch (this.props.typeActive) {
                 case 'albums':
                     items = <Albums albums={this.props.musicData.albums} />;
