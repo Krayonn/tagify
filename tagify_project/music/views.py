@@ -20,7 +20,7 @@ def hello_world(request):
 @api_view((['GET']))
 def retrieveToken(request):
     params = request.query_params
-    data = getToken(params['authCode'])
+    response = getToken(params['authCode'])
     return Response(data)
 
 @api_view((['GET']))
