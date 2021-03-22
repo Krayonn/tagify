@@ -21,8 +21,8 @@ def hello_world(request):
 def retrieveToken(request):
     params = request.query_params
     response = getToken(params['authCode'])
-    return Response(data)
-
+    return response
+    
 @api_view((['GET']))
 def retrieveUserProfile(request):
     params = request.query_params
