@@ -16,8 +16,6 @@ def getToken(authCode):
         'grant_type': 'authorization_code',
         'code': authCode,
         'redirect_uri': os.getenv("REDIRECT_URL")
-        # 'redirect_uri': 'http://localhost:8000'
-        # 'redirect_uri': 'http://localhost:8080'
     }
 
     headers = {
@@ -35,10 +33,12 @@ def getToken(authCode):
         refresh_token = response['refresh_token']
     else:
         print('Something went wrong: ',r)
-        return {"message": "Token could not be retrieved", "error": response}
+        data = {"message": "Token could not be retrieved", "error": response}
+        return Response(status=500, data=data)
 
     user_profile = getUserProfile(access_token)
-    return {"access_token": access_token, "refresh_token": refresh_token, "user_profile": user_profile}
+    data = {'access_token': access_token, 'refresh_token': refresh_token, 'user_profile': user_profile}
+    return Response(status=500, data=data)
 
 def getUserProfile(access_token):
     headers = {'Authorization': 'Bearer '+access_token}
