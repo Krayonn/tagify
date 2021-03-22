@@ -21,7 +21,8 @@ class Home extends Component {
     state = {
         loaded: false,
         placeholder: "Loading",
-        savedTags: false
+        savedTags: false,
+        retrieveTokensError: null
 
     }
 
@@ -54,7 +55,7 @@ class Home extends Component {
                 })
                 .catch(err => {
                     console.log('getTokens failed', err)
-                    return this.setState({ placeholder: "Something went wrong!" });
+                    return this.setState({ retrieveTokensError: err });
                 })
         }
     }
@@ -111,7 +112,10 @@ class Home extends Component {
 
     render() {
         let items = null;
-        if (!this.props.tokens.authToken) {
+        if (this.state.retrieveTokensError) {
+            items = <p>Uh oh! Something went wrong...\n{this.state.retrieveAuthTokens}</p>
+        }
+        else if (!this.props.tokens.authToken) {
             items = <Welcome/>;
         }
         else if (this.props.tokens.authToken && !this.props.musicData[this.props.typeActive]) {
@@ -130,6 +134,7 @@ class Home extends Component {
                     break;
             }
         }
+
         let tagState = null;
         if (this.state.savedTags === 'loading') {
             tagState = <MiniSpinner />

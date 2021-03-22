@@ -24,9 +24,8 @@ def getToken(authCode):
 
     r = requests.post('https://accounts.spotify.com/api/token', data=data, headers=headers)
 
-
     response = json.loads(r.content.decode('utf-8'))
-    print(response)
+
     if (r.ok):
         print(response['access_token'])
         access_token = response['access_token']
