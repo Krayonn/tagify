@@ -28,17 +28,19 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.retrieveTokensHandler()
+        if (!this.props.tokens.authTokens) {
+            this.retrieveTokensHandler()
+        }
     }
-    componentWillUnmount() {
-        // fix Warning: Can't perform a React state update on an unmounted component
-        this.setState = (state,callback)=>{
-            return;
-        };
-    }
+    // componentWillUnmount() {
+    //     // fix Warning: Can't perform a React state update on an unmounted component
+    //     this.setState = (state,callback)=>{
+    //         return;
+    //     };
+    // }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.tokens.authTokens && this.props.tokens !== prevProps.tokens) {
+        if (this.props.tokens.authToken && this.props.tokens !== prevProps.tokens) {
             this.getMusicHandler('albums');
             this.getMusicHandler('tracks');
             this.getMusicHandler('playlists');
@@ -47,6 +49,7 @@ class Home extends Component {
     }
 
     retrieveTokensHandler = () => {
+        console.log('retrieve tokens')
         const params = queryString.parse(this.props.location.search)
         if (!this.props.tokens.authToken && params['code']) {
             axios.get('/api/token/?authCode=' + params['code'])
@@ -118,7 +121,7 @@ class Home extends Component {
 
     render() {
         let items = null;
-        if (this.state.retrieveTokensError && this.props.token.authToken) {
+        if (this.state.retrieveTokensError && !this.props.tokens.authToken) {
             items = <ErrorMsg details={this.state.retrieveTokensError} action="Retrieving auth token"/>
         }
         else if (!this.props.tokens.authToken) {
