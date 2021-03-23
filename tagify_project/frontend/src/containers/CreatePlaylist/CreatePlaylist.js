@@ -3,7 +3,7 @@ import styles from './CreatePlaylist.module.scss';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import Button from '../../components/UI/Button/Button';
 import ReadOnlyTag from './ReadOnlyTag/ReadOnlyTag';
 import * as actions from '../../store/actions/index';

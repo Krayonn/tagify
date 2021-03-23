@@ -37,7 +37,7 @@ def getToken(authCode):
 
     user_profile = getUserProfile(access_token)
     data = {'access_token': access_token, 'refresh_token': refresh_token, 'user_profile': user_profile}
-    return Response(status=500, data=data)
+    return Response(status=200, data=data)
 
 def getUserProfile(access_token):
     headers = {'Authorization': 'Bearer '+access_token}

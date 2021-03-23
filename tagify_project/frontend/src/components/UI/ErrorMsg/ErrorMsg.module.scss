@@ -1,0 +1,10 @@
+@import '../../../master.scss';
+
+.ErrorMsg {
+    color: $white;
+    text-align: center;
+
+    &__big {
+        font-size: 40px;
+    }
+}

@@ -9,11 +9,12 @@ import Tracks from '../../components/Tracks/Tracks';
 import styles from './Home.module.scss';
 import Filters from '../../components/Filters/Filters';
 import Button from '../../components/UI/Button/Button';
-import Spinner from '../../components/Spinner/Spinner';
-import MiniSpinner from '../../components/Spinner/MiniSpinner';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import MiniSpinner from '../../components/UI/Spinner/MiniSpinner';
 import axios from '../../axios';
 import Cookies from "universal-cookie";
 import Welcome from '../../components/Welcome/Welcome';
+import ErrorMsg from '../../components/UI/ErrorMsg/ErrorMsg';
 
 const cookies = new Cookies();
 
@@ -28,11 +29,16 @@ class Home extends Component {
 
     componentDidMount() {
         this.retrieveTokensHandler()
-
+    }
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.tokens && this.props.tokens !== prevProps.tokens) {
+        if (this.props.tokens.authTokens && this.props.tokens !== prevProps.tokens) {
             this.getMusicHandler('albums');
             this.getMusicHandler('tracks');
             this.getMusicHandler('playlists');
@@ -54,8 +60,8 @@ class Home extends Component {
 
                 })
                 .catch(err => {
-                    console.log('getTokens failed', err)
-                    return this.setState({ retrieveTokensError: err });
+                    console.log('getTokens failed', err.response.data.error)
+                    return this.setState({ retrieveTokensError: JSON.stringify(err.response.data.error) });
                 })
         }
     }
@@ -113,7 +119,7 @@ class Home extends Component {
     render() {
         let items = null;
         if (this.state.retrieveTokensError) {
-            items = <p>Uh oh! Something went wrong...\n{this.state.retrieveAuthTokens}</p>
+            items = <ErrorMsg details={this.state.retrieveTokensError} action="Retrieving auth token"/>
         }
         else if (!this.props.tokens.authToken) {
             items = <Welcome/>;
