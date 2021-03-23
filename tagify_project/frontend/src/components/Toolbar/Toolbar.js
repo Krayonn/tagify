@@ -19,7 +19,7 @@ const toolbar = ( props ) => {
     return (
     <header className={styles.Toolbar}>
 
-        <h1>Tagify!</h1>
+        <h1>Tagify</h1>
         {authButton}
         <nav>
             <NavigationItems login={() => authHandler()} logout={props.logout} isAuth={props.isAuth}/>

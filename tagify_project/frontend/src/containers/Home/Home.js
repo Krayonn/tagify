@@ -118,7 +118,7 @@ class Home extends Component {
 
     render() {
         let items = null;
-        if (this.state.retrieveTokensError) {
+        if (this.state.retrieveTokensError && this.props.token.authToken) {
             items = <ErrorMsg details={this.state.retrieveTokensError} action="Retrieving auth token"/>
         }
         else if (!this.props.tokens.authToken) {
