@@ -19,18 +19,14 @@ const albums = (props) => {
                         releaseDate={album.release_date}
                         image={image640}
                         tracks={album.tracks}
-                        />
+                    />
                 )
             })
         )
     }
     return (
-        <div>
-            <div className={styles.tracks}>
-                {albums}
-                <div className={styles.track}>
-                </div>
-            </div>
+        <div className={styles.Albums}>
+            {albums}
         </div>
 
     )

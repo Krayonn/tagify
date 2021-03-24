@@ -49,7 +49,6 @@ class Home extends Component {
     }
 
     retrieveTokensHandler = () => {
-        console.log('retrieve tokens')
         const params = queryString.parse(this.props.location.search)
         if (!this.props.tokens.authToken && params['code']) {
             axios.get('/api/token/?authCode=' + params['code'])
