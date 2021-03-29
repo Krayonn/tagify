@@ -15,6 +15,7 @@ import axios from '../../axios';
 import Cookies from "universal-cookie";
 import Welcome from '../../components/Welcome/Welcome';
 import ErrorMsg from '../../components/UI/ErrorMsg/ErrorMsg';
+import ItemsControls from "../../components/ItemsControls/ItemsControls";
 
 const cookies = new Cookies();
 
@@ -32,18 +33,18 @@ class Home extends Component {
             this.retrieveTokensHandler()
         }
     }
-    // componentWillUnmount() {
-    //     // fix Warning: Can't perform a React state update on an unmounted component
-    //     this.setState = (state,callback)=>{
-    //         return;
-    //     };
-    // }
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.tokens.authToken && this.props.tokens !== prevProps.tokens) {
+            this.getMusicHandler('playlists');
             this.getMusicHandler('albums');
             this.getMusicHandler('tracks');
-            this.getMusicHandler('playlists');
             this.props.onRetrieveTags(this.props.username);
         }
     }
@@ -81,8 +82,16 @@ class Home extends Component {
 
     }
 
+    changePageHandler = (pageNumber) => {
+        this.props.onChangePage(pageNumber)
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
     saveTagsHandler = () => {
-        this.setState({savedTags: 'loading'})
+        this.setState({ savedTags: 'loading' })
 
         const trackTags = Object.entries(this.props.tags).map(
             track => ({
@@ -108,23 +117,30 @@ class Home extends Component {
             credentials: "same-origin"
         })
             .then(res => {
-            this.setState({savedTags: true})
+                this.setState({ savedTags: true })
 
                 console.log(res);
 
-                })
+            })
             .catch(err => {
                 console.log('Something went wrong tagging tracks:', err)
             })
     }
 
     render() {
+        const pageControls = <ItemsControls
+            next={() => this.changePageHandler(this.props.pageNumber + 1)}
+            previous={() => this.changePageHandler(this.props.pageNumber - 1)}
+            pageNumber={this.props.pageNumber}
+            typeActive={this.props.typeActive}
+            musicData={this.props.musicData} />
+
         let items = null;
         if (this.state.retrieveTokensError && !this.props.tokens.authToken) {
-            items = <ErrorMsg details={this.state.retrieveTokensError} action="Retrieving auth token"/>
+            items = <ErrorMsg details={this.state.retrieveTokensError} action="Retrieving auth token" />
         }
         else if (!this.props.tokens.authToken) {
-            items = <Welcome/>;
+            items = <Welcome />;
         }
         else if (this.props.tokens.authToken && !this.props.musicData[this.props.typeActive]) {
             items = <Spinner />
@@ -132,13 +148,28 @@ class Home extends Component {
         else {
             switch (this.props.typeActive) {
                 case 'albums':
-                    items = <Albums albums={this.props.musicData.albums} />;
+                    items = (
+                        <div className={styles.Home__music}>
+                            <Albums albums={this.props.musicData.albums.filter(a => a.page === this.props.pageNumber)} />
+                            {pageControls}
+                        </div>
+                    )
                     break;
                 case 'playlists':
-                    items = <Playlists playlists={this.props.musicData.playlists} />;
+                    items = (
+                        <div className={styles.Home__music}>
+                            <Playlists playlists={this.props.musicData.playlists.filter(p => p.page === this.props.pageNumber)} />
+                            {pageControls}
+                        </div>
+                    )
                     break;
                 case 'tracks':
-                    items = <Tracks tracks={this.props.musicData.tracks} />;
+                    items = (
+                        <div className={styles.Home__music}>
+                            <Tracks tracks={this.props.musicData.tracks.filter(t => t.page === this.props.pageNumber)} />
+                            {pageControls}
+                        </div>
+                    )
                     break;
             }
         }
@@ -181,7 +212,8 @@ const mapStateToProps = state => {
         tagSource: state.tag.tagSource,
         tags: state.tag.tags,
         typeActive: state.music.typeActive,
-        musicData: state.music.musicData
+        musicData: state.music.musicData,
+        pageNumber: state.music.pageNumber
     }
 
 }
@@ -193,7 +225,8 @@ const mapDispatchToProps = dispatch => {
         onSaveMusic: (type, data) => dispatch(actions.saveMusic(type, data)),
         onLogin: (token) => dispatch(actions.login(token)),
         onLogout: () => dispatch(actions.logout()),
-        onRetrieveTags: (username) => dispatch(actions.retrieveTags(username))
+        onRetrieveTags: (username) => dispatch(actions.retrieveTags(username)),
+        onChangePage: (pageNumber) => dispatch(actions.changePage(pageNumber))
     };
 };
 

@@ -1,7 +1,8 @@
 @import '../../master.scss';
 
 .Filters {
-    margin: 0;
+    // Need due to home controls being 'fixed'
+    margin-right: 52px;
     padding: 0;
     list-style: none;
     display: flex;

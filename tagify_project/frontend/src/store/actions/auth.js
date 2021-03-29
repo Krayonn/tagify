@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { clearMusic } from './music';
 
 export const retrieveAuthTokens = (authToken, refreshToken) => {
     return {
@@ -16,10 +17,18 @@ export const login = (userProfile) => {
     }
 }
 
-
-export const logout = () => {
+export const authLogout = () => {
     return {
         type: actionTypes.LOGOUT
+    }
+}
+
+export const logout = () => {
+    console.log('logging out')
+    
+    return dispatch => {
+        dispatch(authLogout())
+        dispatch(clearMusic())
     }
 }
 

@@ -31,7 +31,6 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: (username) => dispatch(actions.login(username)),
         onLogout: () => dispatch(actions.logout())
     };
 };

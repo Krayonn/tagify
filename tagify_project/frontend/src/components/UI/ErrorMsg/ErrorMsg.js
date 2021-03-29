@@ -7,7 +7,7 @@ const errorMsg = (props) => {
     return (
         <div className={styles.ErrorMsg}>
             <div className={styles.ErrorMsg__big}>
-                <p style={{ fontSize: '100px' }}>&#128584;</p>
+                <p style={{ fontSize: '100px', margin: '0.5em 0' }}>&#128584;</p>
                 <p>Uh oh... Something went wrong!</p>
             </div>
             <p>{actionMsg}</p>

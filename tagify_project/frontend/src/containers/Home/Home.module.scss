@@ -16,7 +16,8 @@ body {
 .Home {
   &__controls {
     padding: 10px 0;
-    position: fixed;
+    position: sticky;
+    top: 56px;
     width: 100%;
     z-index: 2;
     background-color: $black;
@@ -29,7 +30,7 @@ body {
 
   &__music {
     position: relative;
-    top: 100px;
+    top: 0;
     z-index: 1;
   }
 }

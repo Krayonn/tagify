@@ -32,6 +32,10 @@ const login = (state, action) => {
 const logout = (state, action) => {
     return {
         ...state,
+        tokens: {
+            authToken: null,
+            refreshToken: null
+        },
         authenticated: false,
         username: null
     }

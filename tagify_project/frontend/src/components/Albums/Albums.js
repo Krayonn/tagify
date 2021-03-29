@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Albums.module.scss';
 import Album from './Album/Album';
+import ItemsControls from '../ItemsControls/ItemsControls';
 
 const albums = (props) => {
 

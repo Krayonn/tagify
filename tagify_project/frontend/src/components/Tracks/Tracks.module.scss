@@ -41,21 +41,18 @@ body {
       }
       
       &__title {
-        margin-left: 70px;
+        margin-left: 50px;
         width: 45%;
         text-transform: uppercase;
         letter-spacing: 1px;
       }
-      
-      &__length {
-        margin-left: auto;
-        font-size: $large;
-      }
-      
-      &__popularity {
-        font-size: $large;
-        margin-left: 55px;
-        padding-right: $padding-sm;
+
+      &__tags {
+        margin-left: 70px;
+        width: 75%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: right;
       }
       
     }

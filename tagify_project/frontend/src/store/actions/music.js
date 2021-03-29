@@ -15,3 +15,15 @@ export const saveMusic = (musicType, musicData) => {
     }
 }
 
+export const changePage = (pageNumber) => {
+    return {
+        type: actionTypes.CHANGE_PAGE,
+        pageNumber: pageNumber
+    }
+}
+
+export const clearMusic = () => {
+    return {
+        type: actionTypes.CLEAR_MUSIC
+    }
+}

@@ -1,4 +1,4 @@
-@import '../../master.scss';
+@import "../../master.scss";
 
 .track {
   & {
@@ -9,16 +9,15 @@
     align-items: center;
     justify-content: space-between;
 
-
     animation-duration: 1s;
     animation-name: slidein;
-    
+
     @keyframes slidein {
       from {
         margin-top: -1%;
         opacity: 0;
       }
-    
+
       to {
         margin-top: 0%;
         opacity: 1;
@@ -44,7 +43,12 @@
   &__number {
     margin-left: $margin-sm;
     color: $grey;
-    width: 12px;
+    width: 32px;
+
+    &__header {
+      font-style: italic;
+      color: rgb(70, 70, 70);
+    }
   }
 
   &__title {
@@ -52,22 +56,35 @@
     margin-left: $margin * 2;
     color: $white;
 
+    &__header {
+      font-style: italic;
+      color: rgb(70, 70, 70);
+    }
+
     &__artists {
       .title {
         &:after {
           margin: 0 $margin-xs;
         }
       }
-        color: $grey;
-        padding: 0 $padding-sm;
-    
+      &__header {
+        font-style: italic;
+        color: rgb(70, 70, 70);
+        .title {
+          &:after {
+            margin: 0 $margin-xs;
+          }
+        }
+      }
+      color: $grey;
+      padding: 0 $padding-sm;
+
     }
   }
   &__divider {
     display: flex;
     flex: 1;
-}
-
+  }
 
   &__addTag {
     color: $grey;
@@ -75,7 +92,6 @@
     font-size: x-large;
     cursor: pointer;
   }
-
 }
 
 .tags {

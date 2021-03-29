@@ -60,80 +60,108 @@ def getUserProfile(access_token):
 def getAlbums(access_token):
     headers = {'Authorization': 'Bearer '+access_token}
 
-    r = requests.get('https://api.spotify.com/v1/me/albums', headers=headers)
-    albums_raw = r.content.decode('utf-8')
+    # r = requests.get('https://api.spotify.com/v1/me/albums', headers=headers)
+    # albums_raw = r.content.decode('utf-8')
+    # albums_json = json.loads(albums_raw)
 
-    albums_json = json.loads(albums_raw)
     albums = []
-    for album in albums_json['items']:
-        album = album['album']
-        tracks = [{
-                    'id': track['id'],
-                    'title': track['name'],
-                    'track_number': track['track_number'],
-                    'artists': [a['name'] for a in track['artists']]
-                } for track in album['tracks']['items']]
-        albums_dict = {
-                'id': album['id'],
-                'name': album['name'],
-                'artist': album['artists'][0]['name'],
-                'release_date': album['release_date'],
-                'tracks': tracks,
-                'images': album['images'] 
-                }
-        albums.append(albums_dict)
+    next_albums='https://api.spotify.com/v1/me/albums'
+    page = 1
+    while next_albums:
+        r = requests.get(next_albums, headers=headers)
+        albums_raw = r.content.decode('utf-8')
+        albums_json = json.loads(albums_raw)
+
+        for album in albums_json['items']:
+
+            album = album['album']
+            tracks = [{
+                        'id': track['id'],
+                        'title': track['name'],
+                        'track_number': track['track_number'],
+                        'artists': [a['name'] for a in track['artists']]
+                    } for track in album['tracks']['items']]
+            albums_dict = {
+                    'page': page,
+                    'id': album['id'],
+                    'name': album['name'],
+                    'artist': album['artists'][0]['name'],
+                    'release_date': album['release_date'],
+                    'tracks': tracks,
+                    'images': album['images'] 
+                    }
+            albums.append(albums_dict)
+        next_albums = albums_json['next']
+        page+=1
 
     return albums
+    # return {'albums': albums, 'next': albums_json['next'], 'total': albums_json['total']}
 
 def getPlaylists(access_token):
     headers = {'Authorization': 'Bearer '+access_token}
 
-    r = requests.get('https://api.spotify.com/v1/me/playlists', headers=headers)
-    playlists_raw = r.content.decode('utf-8')
-    playlists_json = json.loads(playlists_raw)
+    # r = requests.get('https://api.spotify.com/v1/me/playlists', headers=headers)
+    # playlists_raw = r.content.decode('utf-8')
+    # playlists_json = json.loads(playlists_raw)
     playlists = []
-    for playlist in playlists_json['items']:
-        tracks_href = playlist['tracks']['href']
-        r = requests.get(tracks_href, headers=headers)
-        playlists_tracks_raw = r.content.decode('utf-8')
-        tracks_json = json.loads(playlists_tracks_raw)
-        tracks = []
-        counter = 1
-        for track in tracks_json['items']:
-            track = track['track']
-            tracks.append({
-                'id': track['id'],
-                'title': track['name'],
-                'track_number': counter,
-                'images': track['album']['images'],
-                'artists': [a['name'] for a in track['artists']]
-            })
-            counter+=1
-        playlists.append({
-            'id': playlist['id'],
-            'images': playlist['images'],
-            'name': playlist['name'],
-            'description': playlist['description'],
-            'tracks': tracks
-        })
+    next_playlists = 'https://api.spotify.com/v1/me/playlists?limit=10'
+    page = 1
+    while next_playlists:
+        r = requests.get(next_playlists, headers=headers)
+        playlists_raw = r.content.decode('utf-8')
+        playlists_json = json.loads(playlists_raw)
 
+        for playlist in playlists_json['items']:
+            tracks_href = playlist['tracks']['href']
+            r = requests.get(tracks_href, headers=headers)
+            playlists_tracks_raw = r.content.decode('utf-8')
+            tracks_json = json.loads(playlists_tracks_raw)
+            tracks = []
+            counter = 1
+            for track in tracks_json['items']:
+                track = track['track']
+                tracks.append({
+                    'id': track['id'],
+                    'title': track['name'],
+                    'track_number': counter,
+                    'images': track['album']['images'],
+                    'artists': [a['name'] for a in track['artists']]
+                })
+                counter+=1
+            playlists.append({
+                'page': page,
+                'id': playlist['id'],
+                'images': playlist['images'],
+                'name': playlist['name'],
+                'description': playlist['description'],
+                'tracks': tracks
+            })
+
+        page+=1
+        next_playlists = playlists_json['next']
     return playlists
 
 def getTracks(access_token):
     headers = {'Authorization': 'Bearer '+access_token}
-
-    r = requests.get('https://api.spotify.com/v1/me/tracks', headers=headers)
-    tracks_raw = r.content.decode('utf-8')
-    tracks_json = json.loads(tracks_raw)
+    next_playlists = 'https://api.spotify.com/v1/me/tracks?limit=50'
+    page = 1
     tracks = []
-    for track in tracks_json['items']:
-        track = track['track']
-        tracks.append({
-            'id': track['id'],
-            'title': track['name'],
-            'images': track['album']['images'],
-            'artists': [a['name'] for a in track['artists']]
-        })
+
+    while next_playlists:
+        r = requests.get(next_playlists, headers=headers)
+        tracks_raw = r.content.decode('utf-8')
+        tracks_json = json.loads(tracks_raw)
+        for track in tracks_json['items']:
+            track = track['track']
+            tracks.append({
+                'page': page,
+                'id': track['id'],
+                'title': track['name'],
+                'images': track['album']['images'],
+                'artists': [a['name'] for a in track['artists']]
+            })
+        page+=1
+        next_playlists = tracks_json['next']
     return tracks
 
 def createPlaylistsFromTags(access_token, user, request):

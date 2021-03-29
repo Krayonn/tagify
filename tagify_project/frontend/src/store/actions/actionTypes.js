@@ -8,6 +8,9 @@ export const RETIREVE_TAGS_FAIL = 'RETIREVE_TAGS_FAIL';
 
 export const SET_TYPE_ACTIVE = 'SET_TYPE_ACTIVE';
 export const SAVE_MUSIC = 'SAVE_MUSIC';
+export const CLEAR_MUSIC = 'CLEAR_MUSIC';
+export const CHANGE_PAGE = 'CHANGE_PAGE';
+
 
 export const RETRIEVE_AUTH_TOKENS = 'RETRIEVE_AUTH_TOKENS';
 export const SIGNUP = 'SIGNUP';

@@ -6,7 +6,8 @@ export {
 
 export {
     saveMusic,
-    setTypeActive
+    setTypeActive,
+    changePage
 } from './music'
 
 export {
