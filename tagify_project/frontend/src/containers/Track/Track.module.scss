@@ -45,21 +45,13 @@
     color: $grey;
     width: 32px;
 
-    &__header {
-      font-style: italic;
-      color: rgb(70, 70, 70);
-    }
   }
 
   &__title {
-    width: 45%;
+    width: auto !important;
+    // width: 45%;
     margin-left: $margin * 2;
     color: $white;
-
-    &__header {
-      font-style: italic;
-      color: rgb(70, 70, 70);
-    }
 
     &__artists {
       .title {
@@ -67,15 +59,7 @@
           margin: 0 $margin-xs;
         }
       }
-      &__header {
-        font-style: italic;
-        color: rgb(70, 70, 70);
-        .title {
-          &:after {
-            margin: 0 $margin-xs;
-          }
-        }
-      }
+
       color: $grey;
       padding: 0 $padding-sm;
 
