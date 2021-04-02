@@ -38,13 +38,13 @@
       width: 42px;
       height: 42px;
     }
+    padding: $margin-xs;
   }
 
   &__number {
     margin-left: $margin-sm;
     color: $grey;
     width: 32px;
-
   }
 
   &__title {
@@ -62,7 +62,6 @@
 
       color: $grey;
       padding: 0 $padding-sm;
-
     }
   }
   &__divider {
@@ -86,6 +85,14 @@
   }
 }
 
+.desktop {
+  display: contents;
+}
+
+.mobile {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .track {
     &__title {
@@ -99,5 +106,50 @@
     &__popularity {
       display: none;
     }
+  }
+}
+
+@media (max-width: 499px) {
+  .track {
+
+    & {
+      height: 100%;
+      padding: 5px;
+      font-size: small;
+    }
+
+    &__number {
+      width: 10px;
+    }
+
+    &__title {
+      display: grid;
+      margin-left: $margin;
+
+      &__artists {
+        .title {
+          content: none;
+        }
+
+        color: $grey;
+        padding: 2px 0 0 0;
+      }
+    }
+  }
+
+  .tags {
+    & {
+      padding-top: 3px;
+      display: flex;
+      flex-flow: row nowrap;
+      margin-left: 0px;
+      overflow: auto;
+    }
+  }
+  .mobile {
+    display: contents;
+  }
+  .desktop {
+    display: none;
   }
 }

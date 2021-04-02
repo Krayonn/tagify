@@ -20,7 +20,8 @@ const tag = (props) => {
                 <input
                     value={props.tagName}
                     onChange={(event) => props.updateTag(event)}
-                    style={{width: props.tagName.length * 8 +"px"}}/>
+                    style={{width: props.tagName.length * 8 +"px"}}
+                    />
             </div>
             <div className={styles.Tag__delete} onClick={props.deleteTag}>
                 x

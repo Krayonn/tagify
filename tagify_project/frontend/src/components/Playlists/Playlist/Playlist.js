@@ -20,13 +20,13 @@ class Playlist extends Component {
             tracks = (<Tracks tracks={this.props.tracks} showTracks={this.state.showTracks} />)
         }
         return (
-            <div className={styles.playlist}>
-                <div className={styles.playlist__info} onClick={this.showTracksHandler}>
-                    <div className={styles.playlist__info__art}>
+            <div className={styles.Playlist}>
+                <div className={styles.Playlist__info} onClick={this.showTracksHandler}>
+                    <div className={styles.Playlist__info__art}>
                         <img src={this.props.image} alt={this.props.name} />
                     </div>
-                    <div className={styles.playlist__info__meta}>
-                        <div className={styles.playlist__name}>{this.props.name}</div>
+                    <div className={styles.Playlist__info__meta}>
+                        <div className={styles.Playlist__name}>{this.props.name}</div>
                     </div>
                 </div>
                 {tracks}

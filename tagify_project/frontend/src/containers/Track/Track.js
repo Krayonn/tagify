@@ -44,22 +44,41 @@ class Track extends Component {
 
             }
         }
-        
-        const identifier = this.props.image ? 
-            <div className={styles.track__art}><img src={this.props.image}/></div> :
+
+        const identifier = this.props.image ?
+            <div className={styles.track__art}><img src={this.props.image} /></div> :
             <div className={styles.track__number}>{this.props.trackNumber}</div>
+
+
+        const mobileTracks = (
+            <div className={styles.mobile}>
+                <div className={styles.track__title}>
+                    {this.props.name}
+                    <div className={styles.track__title__artists}>{this.props.artists}</div>
+                    <div className={styles.tags}>{tags}</div>
+                </div>
+                {/* provides spacing.. */}
+                <div className={styles.track__divider}></div>
+            </div>
+        )
+
+        const desktopTracks = (
+            <div className={styles.desktop}>
+                <div className={styles.track__title}>{this.props.name}</div>
+                <div className={styles.track__title__artists}>{this.props.artists}</div>
+                {/* provides spacing.. */}
+                <div className={styles.track__divider}></div>
+
+                <div className={styles.tags}>{tags}</div>
+            </div>
+        )
 
         return (
             <div className={styles.track}>
 
                 {identifier}
-
-                <div className={styles.track__title}>{this.props.name}</div>
-                <div className={styles.track__title__artists}>{this.props.artists}</div>
-
-                {/* provides spacing.. */}
-                <div className={styles.track__divider}></div>
-                <div className={styles.tags}>{tags}</div>
+                {desktopTracks}
+                {mobileTracks}
 
                 <div
                     className={styles.track__addTag}

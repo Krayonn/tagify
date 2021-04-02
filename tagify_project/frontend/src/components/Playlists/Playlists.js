@@ -17,18 +17,14 @@ const playlists = (props) => {
                         name={playlist.name}
                         image={image640}
                         tracks={playlist.tracks}
-                        />
+                    />
                 )
             })
         )
     }
     return (
         <div>
-            <div className={styles.tracks}>
-                {playlists}
-                <div className={styles.track}>
-                </div>
-            </div>
+            {playlists}
         </div>
 
     )

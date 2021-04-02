@@ -3,16 +3,32 @@ import styles from './Layout.module.scss';
 import { connect } from 'react-redux';
 
 import Toolbar from '../../components/Toolbar/Toolbar';
+import SideDrawer from '../../components/Toolbar/SideDrawer/SideDrawer';
 import * as actions from '../../store/actions/index';
 
 class Layout extends Component {
+    state = {
+        showSideDrawer: false
+    }
 
+    sideDrawerClosedHandler = () => {
+        this.setState( { showSideDrawer: false } );
+    }
+
+    sideDrawerToggleHandler = () => {
+        this.setState( ( prevState ) => {
+            return { showSideDrawer: !prevState.showSideDrawer };
+        } );
+    }
 
     render() {
 
         return (
             <div className={styles.Layout__logo}>
-                <Toolbar logout={this.props.onLogout} isAuth={this.props.authenticated}/>
+                <Toolbar logout={this.props.onLogout} isAuth={this.props.authenticated} drawerToggleClick={this.sideDrawerToggleHandler}/>
+                <SideDrawer
+                    open={this.state.showSideDrawer}
+                    closed={this.sideDrawerClosedHandler} />
                 <main className={styles.Content} >
                     {this.props.children}
                 </main>

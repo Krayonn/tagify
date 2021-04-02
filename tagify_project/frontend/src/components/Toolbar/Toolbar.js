@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Toolbar.module.scss';
 import NavigationItems from './NavigationItems/NavigationItems';
 import Button from '../UI/Button/Button';
+import DrawerToggle from './SideDrawer/DrawerToggle/DrawerToggle';
 
 const scopes = ['user-library-read', 'playlist-modify-private'];
 
@@ -25,7 +26,8 @@ const toolbar = (props) => {
         <header className={styles.Toolbar}>
             <h1>Tagify</h1>
             {authButton}
-            <nav>
+            <DrawerToggle clicked={props.drawerToggleClick}/>
+            <nav className={styles.DesktopOnly}>
                 <NavigationItems isAuth={props.isAuth} />
             </nav>
         </header>

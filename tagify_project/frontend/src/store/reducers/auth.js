@@ -2,10 +2,10 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     tokens: {
-        authToken: null,
+        authToken: 'test',
         refreshToken: null
     },
-    authenticated: false,
+    authenticated: true,
     username: null,
     displayName: null
 };

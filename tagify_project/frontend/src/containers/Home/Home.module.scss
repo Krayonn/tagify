@@ -1,16 +1,15 @@
-@import '../../master.scss';
+@import "../../master.scss";
 
 body {
   background: $black;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   a {
     color: $grey;
-    
+
     &:hover {
       color: $sand;
     }
   }
-  
 }
 
 .Home {
@@ -22,9 +21,9 @@ body {
     z-index: 2;
     background-color: $black;
     &__input {
-        display: flex;
-        justify-content: left;
-        margin: 10px 0;
+      display: flex;
+      justify-content: left;
+      margin: 10px 0;
     }
   }
 
@@ -39,4 +38,14 @@ body {
   padding: 7px;
   border-radius: 10px;
   border: None;
+}
+
+@media (max-width: 499px) {
+  .Home {
+    &__controls {
+      &__input {
+        justify-content: space-evenly;
+      }
+    }
+  }
 }

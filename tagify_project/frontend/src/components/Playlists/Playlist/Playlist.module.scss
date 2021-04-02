@@ -1,6 +1,6 @@
-@import '../../../master.scss';
+@import "../../../master.scss";
 
-.playlist {
+.Playlist {
   &__info {
     & {
       margin-bottom: $margin;
@@ -25,16 +25,26 @@
         flex-flow: column wrap;
       }
 
-      .playlist__year {
+      &__year {
         color: $grey;
         letter-spacing: 1px;
       }
 
-      .playlist__name {
+      &__name {
         color: $white;
         font-size: $xx-large / 1.2;
         font-weight: lighter;
       }
+    }
+  }
+}
+
+@media (max-width: 499px) {
+  .Playlist {
+    &__name {
+      color: $white;
+      font-size: $xx-large / 1.2;
+      font-weight: lighter;
     }
   }
 }
