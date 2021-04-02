@@ -133,3 +133,4 @@ node_modules/
 
 tagify_project/frontend/static/frontend/
 tagify_project/static/
+/tagify_project/frontend/src/REFERENCE/test-albums.txt
