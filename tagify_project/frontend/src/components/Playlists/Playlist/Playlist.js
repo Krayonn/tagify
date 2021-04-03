@@ -26,7 +26,7 @@ class Playlist extends Component {
                         <img src={this.props.image} alt={this.props.name} />
                     </div>
                     <div className={styles.Playlist__info__meta}>
-                        <div className={styles.Playlist__name}>{this.props.name}</div>
+                        <div className={styles.Playlist__info__meta__name}>{this.props.name}</div>
                     </div>
                 </div>
                 {tracks}

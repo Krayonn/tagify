@@ -1,4 +1,4 @@
-@import '../../../master.scss';
+@import "../../../master.scss";
 
 .album {
   &__info {
@@ -34,6 +34,18 @@
         color: $white;
         font-size: $xx-large / 1.2;
         font-weight: lighter;
+      }
+    }
+  }
+}
+
+@media (max-width: 499px) {
+  .album {
+    &__info {
+      &__meta {
+        .album__name {
+          font-size: $x-large / 1.2;
+        }
       }
     }
   }

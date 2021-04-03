@@ -41,10 +41,12 @@
 
 @media (max-width: 499px) {
   .Playlist {
-    &__name {
-      color: $white;
-      font-size: $xx-large / 1.2;
-      font-weight: lighter;
+    &__info {
+      &__meta {
+        &__name {
+          font-size: $x-large / 1.2;
+        }
+      }
     }
   }
 }

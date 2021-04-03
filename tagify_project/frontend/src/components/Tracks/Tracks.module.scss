@@ -33,10 +33,11 @@ body {
     &__number {
       margin-left: $margin-sm;
       font-style: italic;
+      width: 42px;
     }
 
     &__title {
-      margin-left: 50px;
+      margin-left: 25px;
       width: auto !important;
       text-transform: uppercase;
       letter-spacing: 1px;
